@@ -1,0 +1,4 @@
+waktu, nama, nilai, nim
+
+feedback : kekurangan
+

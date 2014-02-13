@@ -1,0 +1,20 @@
+h1.inline{
+	display: inline;
+	margin-left: 20px;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+	right:0;
+}
+.text-right{
+	text-align: right;
+}
+table.table{
+	width:100%;
+}
+.table-bordered{
+	border: #495056 1px solid;
+}

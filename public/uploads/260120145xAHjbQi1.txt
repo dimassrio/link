@@ -1,0 +1,96 @@
+Dimas Satrio
+bapak assalamualaikum
+Kiki Maulana
+9/15, 6:18pm
+Kiki Maulana
+Waalaikumsalam
+Dimas Satrio
+9/15, 6:20pm
+Dimas Satrio
+pak mau bertanya, untuk yang cz without initial regionnya, performansinya bisa rendah juga pak?
+untuk beberapa titik peers yang diprosesnya bisa sangat banyak ya pak
+kira2 memang seperti itu atau memang ada yang kurang ya pak?
+Kiki Maulana
+9/15, 6:21pm
+Kiki Maulana
+Maksudnya rendah?
+Dimas Satrio
+9/15, 6:21pm
+Dimas Satrio
+peers yang diprosesnya banyak pak, ada satu kasus sampai diatas 100
+Kiki Maulana
+9/15, 6:23pm
+Kiki Maulana
+Salah tuh
+Dimas Satrio
+9/15, 6:24pm
+Dimas Satrio
+tapi saya cek prunning regionnya memang sudah jalan pak, excludenya sudah benar
+Kiki Maulana
+9/15, 6:24pm
+Kiki Maulana
+Average peers processing without initial sangat rendah.
+Untuk density 1000, paling cuma 10-15
+Beda dengan yg initial
+Dimas Satrio
+9/15, 6:27pm
+Dimas Satrio
+iya untuk yang lain memang paling banyak 15an titik pak,
+Kiki Maulana
+9/15, 6:28pm
+Kiki Maulana
+Trus?
+Dimas Satrio
+9/15, 6:28pm
+Dimas Satrio
+untuk proses excludenya, itu diambil semua peers contact zone dulu dari tiap vertex atau langsung diexclude tiap vertex langsung buat prunning regionnya pak?
+Kiki Maulana
+9/15, 6:29pm
+Kiki Maulana
+Pruning jalan setelah vertex pertama terbentuk
+Dia bikin area baru, namanya pruning area
+Dimas Satrio
+9/15, 6:35pm
+Dimas Satrio
+iya, untuk prunning area yang pertama, eliminasi peersnya banyak pak, nah untuk yang setelahnya dia kadang malah tidak ada proses eliminasi pak.
+asumsi saya membuat programnya itu ketika aplikasi proses peers yang didapat dari contact zone, saya kiranya bakal ada beberapa vertex baru yang terbentuk, jadi untuk setiap iterasi, saya proses tiap vertex yang belum tervisit
+Dimas Satrio
+9/15, 6:35pm
+Dimas Satrio
+atau seharusnya setiap iterasi, vertes yang diproses prunning hanya satu pak?
+Kiki Maulana
+9/15, 6:35pm
+Kiki Maulana
+Klo ga ada eliminasi kan gpp
+Iya, satu2
+Dimas Satrio
+9/15, 6:38pm
+Dimas Satrio
+ berarti bisa saja terjadi kondisi dimana ada vertex yang belum terproses pak? karena peersnya sudah tereliminasi duluan
+Kiki Maulana
+9/15, 6:38pm
+Kiki Maulana
+Klo sudah tereliminasi berarti memang tidak terpakai
+Ngapain diproses?
+Dimas Satrio
+9/15, 6:41pm
+Dimas Satrio
+iya pak tadi awalnya saya dapat kasus dimana tidak keluar vertexnya, saya kiranya memang karena sudah tereliminasi duluan sebelum diproses via contact zone,
+jadi saya ubah jadi cek setiap vertex yang belum diproses setiap iterasi,
+hasilnya ada tapi itu pak peers yang diprosenya diatas 50
+Kiki Maulana
+9/15, 6:42pm
+Kiki Maulana
+Klo ga ada vertex, berarti peers terletak di garis lurus
+Klo gak, km salah coding 
+Dimas Satrio
+9/15, 6:44pm
+Dimas Satrio
+iya pak mungkin salah coding tapi masih bingung missnya dimana karena ada hasilnya sih pak hehe
+pak boleh saya jelasin untuk algoritma programnya pak, mungkin saya ada yang miss?
+jadi bapak bisa mengkoreksi..
+Kiki Maulana
+9/15, 6:44pm
+Kiki Maulana
+Boleh
+lbh baik klo pake ilustrasi
