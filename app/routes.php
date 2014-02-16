@@ -45,7 +45,9 @@ Route::group(array('before'=>'auth'), function(){
 	Route::get('courses/{idc}/result/printpdf', 'CoursesController@createPdf');
 
 	Route::resource('materials', 'MaterialsController');
+
 	Route::resource('classrooms', 'ClassroomsController');
+	Route::get('classrooms/{id}/toggle', 'ClassroomsController@toggleStatus');
 
 	Route::get('evaluation', 'UsersController@evaluation');
 	Route::post('evaluation', 'UsersController@processEvaluation');

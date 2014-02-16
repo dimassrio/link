@@ -71,7 +71,7 @@ class UsersController extends BaseController {
 			$user->nim = Input::get('nim');
 			$user->email = Input::get('email');
 			$user->realname = Input::get('realname');
-			$user->classroom = Input::get('class');
+			$user->classroom()->attach(Input::get('classroom'));
 			$user->phone = Input::get('phone');
 			$user->level = 3;	
 
@@ -133,7 +133,7 @@ class UsersController extends BaseController {
 				'realname' => Input::get('realname'),
 				'class' => Input::get('class'),
 				'phone' => Input::get('phone')
-				),
+				),	
 			array(
 				'nim' => 'required|numeric',
 				'email' => 'required|email',
@@ -175,6 +175,10 @@ class UsersController extends BaseController {
 	 */
 	public function destroy($id)
 	{
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+
 		$user = User::find($id);
 		$user->delete();
 

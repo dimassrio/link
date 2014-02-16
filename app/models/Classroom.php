@@ -10,4 +10,8 @@ class Classroom extends Eloquent {
 		return $c['name'];
 	}
 
+	public function users()
+	{
+		return $this->belongsToMany('User','classroom_user')->withPivot('status');
+	}
 }

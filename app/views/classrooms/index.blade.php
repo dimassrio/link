@@ -18,22 +18,43 @@
 					</thead>
 				
 				<tbody>
-				<?php $no = 1; ?>
+				<?php $no = 1; $x = 0;?>
 					@foreach($classes as $class)
 					<tr>
-						<td>{{$no}}</td>
+						<td>{{$no++}}</td>
 						<td>{{$class['name']}}</td>
-						<td>{{User::getNameFromId($class['teacher'])}}</td>
+						<td>{{User::getNameFromId($teacher[$x])}}</td>
 						<td>
-							<a href="{{url('classrooms/'.$class['id'].'/edit')}}" class="btn btn-primary">Edit Classroom</a>
-							<a href="{{url('classrooms/'.$class['id'])}}" data-method="delete" class="btn btn-danger">Delete Classroom</a>
+							@if($class['active']== 0) <a href="{{url('classrooms')}}/{{$class['id']}}/toggle" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> Enable Classroom</a>
+							@else<a href="{{url('classrooms')}}/{{$class['id']}}/toggle" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Disable Classroom</a>
+							@endif
+							<a href="{{url('classrooms/'.$class['id'].'/edit')}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit Classroom</a>
+							
+							<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-method-modal="{{url('classrooms/').'/'.$class->id}}"><span class="glyphicon glyphicon-remove"></span> Delete Classroom</button>
 						</td>
 					</tr>
-					<?php $no; ?>
+					<?php $x++;?>
 					@endforeach
 				</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				      </div>
+				      <div class="modal-body">
+				        Are you really sure you want to delete this item?
+				      </div>
+				      <div class="modal-footer">
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
 @stop

@@ -10,6 +10,11 @@ class ClassroomsController extends BaseController {
 	public function index()
 	{
 		$data['classes'] = Classroom::all();
+		$data['teacher'] = array();
+		foreach ($data['classes'] as $class) {
+			$x = $class->users()->wherePivot('status','=',2)->get()->first();
+			array_push($data['teacher'], $x['original']['pivot_user_id']);
+		}
         return View::make('classrooms.index', $data);
 	}
 
@@ -38,10 +43,11 @@ class ClassroomsController extends BaseController {
 	{
 		$data = new Classroom;
 		$data->name = Input::get('name');
-		$data->teacher = Input::get('teacher');
 		$data->number = 0;
 		$data->save();
-
+		$user = User::find(Input::get('teacher'));
+		$user->classroom()->attach($data->id,array('status' => 2));
+		
 		return Redirect::to('classrooms')->with('messages','Classroom saved');
 
 	}
@@ -65,7 +71,14 @@ class ClassroomsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        return View::make('classrooms.edit');
+		$data['classroom'] = Classroom::find($id);
+		$teacher = User::where('level','=',2)->get();
+		$arr = array();
+		foreach ($teacher as $t) {
+			$arr[$t['id']] = $t['realname'];
+		}
+		$data['teacher'] = $arr;
+        return View::make('classrooms.edit', $data);
 	}
 
 	/**
@@ -76,7 +89,16 @@ class ClassroomsController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$data = Classroom::find($id);
+		$data->name = Input::get('name');
+		$data->number = 0;
+		$data->save();
+		$teacher = $data->users()->wherePivot('status','=',2)->detach();
+
+		$user = User::find(Input::get('teacher'));
+		$user->classroom()->attach($data->id,array('status' => 2));
+		
+		return Redirect::to('classrooms')->with('messages','Classroom saved');
 	}
 
 	/**
@@ -87,7 +109,23 @@ class ClassroomsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$classroom = Classroom::find($id);
+		$classroom->delete();
+
+		return Redirect::to('classrooms')->with('message', 'The classroom have been successfully deleted');
+
+	}
+
+	public function toggleStatus($id){
+		$cl = Classroom::find($id);
+		if ($cl->active == 0) {
+			$cl->active = 1;
+		}else{
+			$cl->active = 0;
+		}
+		$cl->save();
+
+		return Redirect::to('classrooms')->with('message','Classroom '.$cl->name.' have been edited.');
 	}
 
 }
