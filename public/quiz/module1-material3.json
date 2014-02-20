@@ -1,0 +1,72 @@
+{
+	"questionlist" : [{
+		"question" : "People around the world own different kinds of cell phones that ______________________________________________________" ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 2},
+	{
+		"question" : "First of all, my iPhone 4 is not new, but it’s _________________________________________________________________________" ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 3 },
+	{
+		"question" : "This phone is __________________________________________ other smart phones because it has video call." ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 1},
+	{
+		"question" : "For sure, it’s ____________________________________________ after iPhone 5." ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 4},
+	{
+		"question" : "Nokia Lumia 920 could be ________________________________ after Apple i-Phone-4. However, i-Phone 4 still controls the market of smart phones." ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 4},
+	{
+		"question" : "If you want to buy affordable smart phones, you need to go to Bandung Electronic Mall because there are phones that _________________________________________________________________" ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit the bills and the needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 2},
+	{
+		"question" : "Nowadays, Samsung Galaxy Note 8.0 is _______________________ Apple i-Phone 5 because of Samsung’s many features." ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 1},
+	{
+		"question" : "You need to bring a friend who can check whether the second-hand smart phone that you want to purchase is ____________________" ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 3},
+	{
+		"question" : "Everyone should consider buying a telecommunication device that ______________________________________________________" ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 2},
+	{
+		"question" : " I believe Nokia phone will become _________________________ if they keep developing and updating their features and applications." ,
+		"answerlist" : [{"key": 1, "answer" : "A notch above"},
+		{"key": 2, "answer" : "Fit their bills and their needs"},
+		{"key": 3, "answer" : "In mint condition"},
+		{"key": 4, "answer" : "The next best thing"}],
+		"correct" : 4}]
+}

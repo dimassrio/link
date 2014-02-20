@@ -1,0 +1,64 @@
+{ "questionlist": [{
+	"question": "How does Todd feel about his phone?",
+	"answerlist" : [
+		{"key":1, "answer" : "He loves it so much."},
+		{"key":2, "answer" : "He really hates it."},
+		{"key":3, "answer" : "He dislikes it."},
+		{"key":4, "answer" : "He feels nothing."}],
+	"correct" : 3
+},
+{
+	"question": "What does Todd call his phone?",
+	"answerlist" : [
+		{"key":1, "answer" : "He calls it mobile phone."},
+		{"key":2, "answer" : "He calls it handheld."},
+		{"key":3, "answer" : "He calls it hand phone."},
+		{"key":4, "answer" : "He calls it cellular phone."}],
+	"correct" : 2
+},
+{
+	"question": "What does Simon call his phone?",
+	"answerlist" : [
+		{"key":1, "answer" : "He calls it mobile phone."},
+		{"key":2, "answer" : "He calls it handheld."},
+		{"key":3, "answer" : "He calls it hand phone."},
+		{"key":4, "answer" : "He calls it cellular phone."}],
+	"correct" : 4
+},
+{
+	"question": "How does Todd feel about being unable of taking a phone call?",
+	"answerlist" : [
+		{"key":1, "answer" : "He feels bad."},
+		{"key":2, "answer" : "He feels sad."},
+		{"key":3, "answer" : "He feels happy."},
+		{"key":4, "answer" : "He feels nothing."}],
+	"correct" : 1
+},
+{
+	"question": "What did Todd do with his phone?",
+	"answerlist" : [
+		{"key":1, "answer" : "He puts it in his bag."},
+		{"key":2, "answer" : "He puts it in his study room."},
+		{"key":3, "answer" : "He puts it in his room."},
+		{"key":4, "answer" : "He puts it in his closet."}],
+	"correct" : 4
+},
+{
+	"question": "What kind of technology does Todd like?",
+	"answerlist" : [
+		{"key":1, "answer" : "He likes his laptop."},
+		{"key":2, "answer" : "He likes his home phone."},
+		{"key":3, "answer" : "He likes his cellular phone."},
+		{"key":4, "answer" : "He doesn’t like anything."}],
+	"correct" : 2
+},
+{
+	"question": "What is the meaning of Simon’s expression “agree to disagree”?",
+	"answerlist" : [
+		{"key":1, "answer" : "He agrees with Todd."},
+		{"key":2, "answer" : "He wants Todd to agree with him."},
+		{"key":3, "answer" : "He disagrees with Todd."},
+		{"key":4, "answer" : "He wants Todd to disagree with him."}],
+	"correct" : 3
+}]
+}

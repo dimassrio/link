@@ -9,7 +9,7 @@ class ClassroomsController extends BaseController {
 	 */
 	public function index()
 	{
-		$data['classes'] = Classroom::all();
+		$data['classes'] = Classroom::all()->sortBy('name');
 		$data['teacher'] = array();
 		foreach ($data['classes'] as $class) {
 			$x = $class->users()->wherePivot('status','=',2)->get()->first();

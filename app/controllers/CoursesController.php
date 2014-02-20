@@ -107,7 +107,8 @@ class CoursesController extends BaseController {
 	public function selectCourses()
 	{
 		$date = date('Y-m-d');
-		$data['courses'] = Course::where('start','<',$date)->where('end', '>', $date)->get();
+		$data['courses'] = Course::where('start','<=',$date)->where('end', '>=', $date)->get();
+		
 		$data['pagetitle'] = "Select Course";
 		return Response::view('select', $data)->header('Cache-Control', 'no-store, no-cache, must-revalidate');
 	}
@@ -166,6 +167,7 @@ class CoursesController extends BaseController {
 		$data['cur'] = $user->course()->wherePivot('course_id', '=', $idc)->get()->first();
 		$data['cur']= $data['cur']['original']['pivot_current'];
 		$data['courses'] = Course::find($idc);
+		$data['max'] = Material::where('course','=', $idc)->count();
 		$data['list'] = Material::where('course', '=', $idc)->orderBy('level')->get();
 		if(is_null($idm)){
 			$material = Material::where('course','=', $idc)->where('level', '=', $data['cur'])->get()->first();
@@ -247,17 +249,20 @@ class CoursesController extends BaseController {
 		$ql = Session::get('list');
 
 		$x = sizeof($ql);
+		
 		$data = Input::all();
 		// Validating Quiz
 		$value = 0;
 		for ($i=0; $i < $x ; $i++) { 
 			$j = $i+1;
+			var_dump($data['item_'.$j][0]."==".$ql[$i]->correct);
 			if($data['item_'.$j][0]==$ql[$i]->correct){
 				$value++;
 			}
 		}
 
 		$data['value'] = $value;
+		
 		// Decrementing Chance
 		foreach ($user->material as $mat) {
 			if($mat['original']['pivot_material_id'] == $idm){
@@ -296,7 +301,6 @@ class CoursesController extends BaseController {
 		$material = Material::find($idm);
 
 		return Redirect::to('courses/'.$idc.'/result')->with('message', 'You have finished material '.$material['name'])->header('Cache-Control', 'no-store, no-cache, must-revalidate');
-
 	}
 
 	/**
@@ -307,9 +311,10 @@ class CoursesController extends BaseController {
 	 */
 	public function nextMaterial($idc, $idm)
 	{
-		$course = Course::find($idm);
-		$material = Material::find($idc);
+		$course = Course::find($idc);
+		$material = Material::find($idm);
 		$user = Auth::user();
+
 		// Check if Material have quiz or not
 		if(!$material->quiz == ""){
 			return Redirect::to('courses/'.$idc.'/material/'.$idm)->with('message'. 'This operation is not allowed');

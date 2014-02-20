@@ -36,35 +36,38 @@
 				</h1>
 				<!-- Navigation -->
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#content" data-toggle="tab">Content</a></li>
-					<li><a href="#video" data-toggle="tab">Video</a></li>
+					
+					<li  class="active" ><a href="#Material" data-toggle="tab">Material</a></li>
 					@if(!$material['quiz'] == "")
 						<li><a href="#quiz" data-toggle="tab">Quiz</a></li>
 					@endif
+					<li><a href="#reference" data-toggle="tab">Reference</a></li>
 				</ul>
 				<div class="tab-content material-body">
 					<!-- Content -->
-					<div class="tab-pane" id="content">
+					<div class="tab-pane" id="reference">
 						<div class="material-content panel panel-default">
-							<div class="panel-body">{{$material['content']}}</div>
+							<div class="panel-body">{{Material::prepareReference($material['content'])}}</div>
 							<div class="panel-footer"><strong>Authored by : </strong>{{$material['author']}}</div>
 						</div>	
 					</div>
-					<!-- Video -->
-					<div class="tab-pane active" id="video">
+					<!-- Material -->
+					<div class="tab-pane active" id="Material">
 						<div class="material-video video-wrapper">
-							<iframe src="//www.youtube.com/embed/{{$material['video']}}?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+							<iframe src="//www.youtube.com/embed/{{Material::getValueFromUrl($material['video'])}}?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
 						</div>
 						<hr>
 						@if ($material['quiz'] == "")
+							@if($cur<=$max)
 							<a href="{{url('courses').'/'.$courses['id'].'/material/'.$material['id'].'/nextmaterial'}}" class="btn btn-success btn-lg btn-block">Go to Next Material</a>
+							@endif
 						@endif
 					</div>
 					<!-- Quiz -->
 					@if(!$material['quiz'] == "")
 					<div class="tab-pane" id="quiz">
 						<div class="panel panel-default">
-							<div class="panel-body"><p>In order to move to the next learning material, you must complete the quiz provided below. Remember you can only take the test twice, and every question and anwer choice will be randomized in order to prevent cheating. We hope that you can complete this test.</p></div>
+							<div class="panel-body"><p>In order to move to the next learning material, you must complete the quiz provided below. Remember you can only take the test twice, and every question and anwer choice will be randomized in order to prevent memorizing the answers. We hope that you can complete this test.</p></div>
 							<div class="panel-footer">
 								<p class="lead">The last result for this test is : {{$qr}} </p>
 							</div>

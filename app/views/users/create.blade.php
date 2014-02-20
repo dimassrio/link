@@ -16,7 +16,7 @@
 				<div class="form-group"><label for="username">Username*</label><input name="username" type="text" class="form-control"></div>
 				<div class="form-group"><label for="password">Password*</label><input name="password" type="password" class="form-control"></div>
 				<div class="form-group"><label for="realname">Real Name*</label><input name="realname" type="text" class="form-control" placeholder="example : John Doe"></div>
-				<div class="form-group">{{Form::label('class','Class*')}}{{Form::select('class',$classes,null,array('class'=>'form-control'))}}</div>
+				<div class="form-group">{{Form::label('classroom','Class*')}}{{Form::select('classroom',$classes,null,array('class'=>'form-control'))}}</div>
 				<div class="form-group"><label for="email">Email*</label><input name="email" type="text" class="form-control" placeholder="example : email@email.com"></div>
 				<div class="form-group"><label for="phone">Phone*</label><input name="phone" type="text" class="form-control" placeholder="example : 0811111111111"></div>
 				<div class="form-group"><input type="submit" class="btn btn-success btn-block btn-lg" value="Create Account"></div>

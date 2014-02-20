@@ -50,7 +50,7 @@ class UsersController extends BaseController {
 				'nim' => Input::get('nim'),
 				'email' => Input::get('email'),
 				'realname' => Input::get('realname'),
-				'class' => Input::get('class'),
+				'classroom' => Input::get('classroom'),
 				'phone' => Input::get('phone')
 				),
 			array(
@@ -58,7 +58,7 @@ class UsersController extends BaseController {
 				'password' => 'required|min:6',
 				'nim' => 'required|unique:users|numeric',
 				'email' => 'required|email',
-				'class' => 'required',
+				'classroom' => 'required',
 				'realname' =>'required',
 				'phone' =>'required|numeric'
 			)
@@ -71,14 +71,15 @@ class UsersController extends BaseController {
 			$user->nim = Input::get('nim');
 			$user->email = Input::get('email');
 			$user->realname = Input::get('realname');
-			$user->classroom()->attach(Input::get('classroom'));
+			
 			$user->phone = Input::get('phone');
 			$user->level = 3;	
 
 			$user->save();
-
-			$classroom = Classroom::find(Input::get('class'));
-
+			
+			$user->classroom()->attach(Input::get('classroom'), array('status'=> 3));
+			$classroom = Classroom::find(Input::get('classroom'));
+			
 			$classroom->number = $classroom->number + 1;
 
 			return Redirect::to('/')->with('message', 'Thanks for registering, please login to enter the dashboard');
@@ -148,14 +149,22 @@ class UsersController extends BaseController {
 			$user->nim = Input::get('nim');
 			$user->email = Input::get('email');
 			$user->realname = Input::get('realname');
-			$user->classroom = Input::get('class');
 			$user->phone = Input::get('phone');
 
 			$user->save();
 
+			var_dump($user);
+			die();
+
 			$classroom = Classroom::find($user->classroom);
 			$classroom->number = $classroom->number - 1;
 			$classroom->save();
+
+
+			$user->classroom()->detach();
+			$user->classroom()->attach(Input::get('classroom'), array('status'=> 3));
+			$classroom = Classroom::find(Input::get('classroom'));
+			$classroom->number = $classroom->number + 1;
 
 			$class = Classroom::find(Input::get('class'));
 			$class->number = $class->number + 1;
@@ -217,11 +226,28 @@ class UsersController extends BaseController {
 
 	public function showReset()
 	{
-
+		return Response::view('users.show-reset');
 	}
 
 	public function processReset(){
+		$id = User::getIdFromNim(Input::get('nim'));
+		if(is_null($id)){
+			return Redirect::to('reset')->with('message','Maaf NIM yang anda maksud tidak terdaftar dalam database kami.');
+		}else{
+			$user = User::find($id);
+			$password = Input::get('nim') * rand(5,10);
+			$user->password = Hash::make(''.$password);
+			$user->save();
 
+			$data['user'] = User::find($id);
+			$data['password'] = $password;
+			
+			Mail::send('resetmail', $data, function($message) use($user){
+    			$message->to( $user->email, $user->realname)->subject('Online Language Center Reset Password');
+			});
+
+			return Redirect::to('/')->with('message', 'Password baru anda telah kami kirimkan.');
+		}
 	}
 
 	public function completeReset(){

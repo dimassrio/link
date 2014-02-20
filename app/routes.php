@@ -23,9 +23,9 @@ Route::get('/', function(){
 Route::resource('users', 'UsersController');
 Route::post('login', 'UsersController@login');
 Route::get('logout', 'UsersController@logout');
-Route::get('users/reset', 'UsersController@showReset');
-Route::post('users/reset', 'UsersController@processReset');
-Route::get('users/reset/{id}', 'UsersController@completeReset');
+Route::get('reset', 'UsersController@showReset');
+Route::post('reset', 'UsersController@processReset');
+Route::get('reset/{id}', 'UsersController@completeReset');
 
 /*Login*/
 Route::group(array('before'=>'auth'), function(){

@@ -19,7 +19,7 @@
 						<tr>
 							<td rowspan="2">{{$no++}}</td>
 							<td>{{$user->realname}}</td>
-							<td>{{$user->classroom}}</td>
+							<td>@if($user->level > 2){{$user->classroom}}@else Not a student @endif </td>
 							<td>{{User::getStatus($user->level)}}</td>
 							<td>{{$user->username}}</td>
 							<td>{{$user->email}}</td>
