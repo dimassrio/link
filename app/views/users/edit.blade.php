@@ -21,8 +21,8 @@
 					{{Form::text('realname',null,array('class'=>'form-control'))}}
 				</div>
 				<div class="form-group">
-					{{Form::label('class','Class*')}}
-					{{Form::select('class',$classes,null,array('class'=>'form-control'))}}
+					{{Form::label('classroom','Class*')}}
+					{{Form::select('classroom',$classes,null,array('class'=>'form-control'))}}
 				</div>
 				<div class="form-group">
 					{{Form::label('email','Email*')}}

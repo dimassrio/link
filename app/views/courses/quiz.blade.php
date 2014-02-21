@@ -2,7 +2,7 @@
 
 @section('body')
 	<div class="container">
-		<div class="row">
+		<div class="row course-nav">
 			<div class="col-md-12">
 				<ul class="nav nav-pills">
 					<li><a href="{{url('courses').'/'.$courses['id']}}">Information</a></li>
@@ -49,7 +49,7 @@
 								Please check your answer before submiting, you can check your answer by seeing the indicator on the left side. Remember you can only take the test twice, so do your best.
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
 								<input id="formSubmits" type="submit" class="btn btn-primary" value="Submit Quiz" disabled="disabled">
 							</div>
 						</div>

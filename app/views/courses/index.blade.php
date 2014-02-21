@@ -43,3 +43,7 @@
 		</div>
 	</div>
 @stop
+
+@extends('js')
+	{{HTML::script(asset('assets/js/delete.modal.js'))}}
+@stop

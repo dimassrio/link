@@ -5,7 +5,7 @@
 	<div class="container">
 	<div class="row">
 		<h1 class="text-center">
-			Language is fun, <small>start learning right here, right now, straight from your computer.</small>
+			Learning English is fun, <small>start learning right here, right now, straight from your computer.</small>
 		</h1>
 		<div class="col-md-2 col-md-offset-4">
 			<a href="{{url('users/create')}}" class="btn btn-danger btn-lg btn-block"><span class="glyphicon glyphicon-user"></span> Register Now</a>
@@ -52,4 +52,8 @@
 			</div>
 		</div>
 	</div>
+@stop
+
+@extends('js')
+	{{HTML::script(asset('assets/js/delete.modal.js'))}}
 @stop

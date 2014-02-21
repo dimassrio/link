@@ -2,7 +2,7 @@
 
 @section('body')
 	<div class="container">
-		<div class="row">
+		<div class="row course-nav">
 			<div class="col-md-12">
 				<ul class="nav nav-pills">
 					<li class="active"><a href="{{url('courses').'/'.$courses['id']}}"><span class="glyphicon glyphicon-white glyphicon-info-sign"></span> Information</a></li>

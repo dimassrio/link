@@ -25,7 +25,8 @@
 						<td>{{$class['name']}}</td>
 						<td>{{User::getNameFromId($teacher[$x])}}</td>
 						<td>
-							@if($class['active']== 0) <a href="{{url('classrooms')}}/{{$class['id']}}/toggle" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> Enable Classroom</a>
+							@if($class['active']== 0) 
+								<a href="{{url('classrooms')}}/{{$class['id']}}/toggle" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> Enable Classroom</a>
 							@else<a href="{{url('classrooms')}}/{{$class['id']}}/toggle" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Disable Classroom</a>
 							@endif
 							<a href="{{url('classrooms/'.$class['id'].'/edit')}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit Classroom</a>

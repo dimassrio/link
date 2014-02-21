@@ -247,7 +247,7 @@ class CoursesController extends BaseController {
 	public function validateQuiz($idc, $idm){
 		$user = Auth::user();
 		$ql = Session::get('list');
-
+		$maxChance = 2;
 		$x = sizeof($ql);
 		
 		$data = Input::all();
@@ -282,14 +282,18 @@ class CoursesController extends BaseController {
 				foreach ($user->material as $mat) {
 					if($mat['original']['pivot_material_id'] == $mate['id']){
 						if($mat['original']['pivot_value']==0){
-							$course->pivot->current = $course->pivot->current + 1;
-							$course->pivot->save();	
+							if(!$mat->pivot->chance < $maxChance){
+								$course->pivot->current = $course->pivot->current + 1;
+								$course->pivot->save();	
+							}
 						}
 					}else{
 						$count++;
 						if(sizeof($user->material)==$count){
-							$course->pivot->current = $course->pivot->current + 1;
-							$course->pivot->save();		
+							if(!$mat->pivot->chance < $maxChance){
+								$course->pivot->current = $course->pivot->current + 1;
+								$course->pivot->save();
+							}
 						}
 						
 					}
