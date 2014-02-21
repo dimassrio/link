@@ -3,7 +3,7 @@
 @section('body')
 <div class="container">
 <div class="row">
-	<h1 class="page-header">USERS! <small>please edit the information below with proper care.</small></h1>
+	<h1 class="page-header">EDIT PROFILE <small>please edit the information below with proper care.</small></h1>
 </div>
 <div class="row">
 	
@@ -33,6 +33,20 @@
 					{{Form::text('phone',null,array('class'=>'form-control'))}}
 				</div>
 				<div class="form-group"><input type="submit" class="btn btn-success btn-block btn-lg" value="Edit Account"></div>
+			{{Form::close()}}
+
+			<h3 class="page-header">Reset Password</h3>
+			{{Form::open(array('method'=>'POST','url' => 'edit-password'))}}
+				<div class="form-group">
+					<label for="passwordold">Current Password</label><input name="passwordold" type="password" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="passwordnew">New Password</label><input name="passwordnew" type="password" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="passwordnew_confirmation">New Password (Confirmation) </label><input name="passwordnew_confirmation" type="password" class="form-control">
+				</div>
+				<div class="form-group"><input type="submit" class="btn btn-danger btn-block btn-lg" value="Edit Password"></div>
 			{{Form::close()}}
 		</div>
 		<div class="col-md-4">

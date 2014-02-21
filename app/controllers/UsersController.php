@@ -78,10 +78,10 @@ class UsersController extends BaseController {
 			$user->save();
 			
 			$user->classroom()->attach(Input::get('classroom'), array('status'=> 3));
-			$classroom = Classroom::find(Input::get('classroom'));
 			
+			$classroom = Classroom::find(Input::get('classroom'));
 			$classroom->number = $classroom->number + 1;
-
+			$classroom->save();
 			return Redirect::to('/')->with('message', 'Thanks for registering, please login to enter the dashboard');
 		}else{
 			return Redirect::to('users/create')->withErrors($validator);
@@ -132,7 +132,7 @@ class UsersController extends BaseController {
 				'nim' => Input::get('nim'),
 				'email' => Input::get('email'),
 				'realname' => Input::get('realname'),
-				'class' => Input::get('class'),
+				'class' => Input::get('classroom'),
 				'phone' => Input::get('phone')
 				),	
 			array(
@@ -152,25 +152,23 @@ class UsersController extends BaseController {
 			$user->phone = Input::get('phone');
 
 			$user->save();
+			$cid = $user->classroom->first();
+			$cid = $cid["original"]["id"];
+			
+			$classroom = Classroom::find($cid);			
 
-			var_dump($user);
-			die();
-
-			$classroom = Classroom::find($user->classroom);
 			$classroom->number = $classroom->number - 1;
 			$classroom->save();
 
 
 			$user->classroom()->detach();
 			$user->classroom()->attach(Input::get('classroom'), array('status'=> 3));
-			$classroom = Classroom::find(Input::get('classroom'));
-			$classroom->number = $classroom->number + 1;
 
-			$class = Classroom::find(Input::get('class'));
+			$class = Classroom::find(Input::get('classroom'));
 			$class->number = $class->number + 1;
 			$class->save();
 
-			return Redirect::to('dashboard')->with('message', 'Thanks for registering, please login to enter the dashboard');
+			return Redirect::to('dashboard')->with('message', 'Edit process completed.');
 		}else{
 			return Redirect::to('users/'.$id.'/edit')->withErrors($validator);
 		}
@@ -265,5 +263,38 @@ class UsersController extends BaseController {
 		$data['classroom'] = Classroom::where('teacher','=',$user->id)->get();
 		
 		return Response::view('users.teacher-index', $data);
+	}
+
+	public function editPassword(){
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$validator = Validator::make(
+			array(
+				'passwordold' => Input::get('passwordold'),
+				'passwordnew' => Input::get('passwordnew'),
+				'passwordnew_confirmation' => Input::get('passwordnew_confirmation')
+				),	
+			array(
+				'passwordold' => 'required',
+				'passwordnew' => 'required|confirmed',
+				'passwordnew_confirmation' => 'required'
+			)
+		);
+		$user = Auth::user();
+		$id = $user->id;
+		if($validator->passes()){
+
+			if($user->password = Hash::make(Input::get('passwordold'))){
+				$user->password = Hash::make(Input::get('passwordnew'));
+				$user->save();
+			}else{
+				return Redirect::to('users/'.$id.'/edit')->with('message', 'Your current password is incorrect.');
+			}
+
+			return Redirect::to('dashboard')->with('message', 'Edit process completed.');
+		}else{
+			return Redirect::to('users/'.$id.'/edit')->withErrors($validator);
+		}
 	}
 }

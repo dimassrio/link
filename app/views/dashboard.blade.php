@@ -38,6 +38,7 @@
 						<li class="list-group-item"><span class="glyphicon glyphicon-user"></span>  {{Auth::user()->username}}</li>
 						<li class="list-group-item"><span class="glyphicon glyphicon-phone"></span> {{Auth::user()->phone}}</li>
 						<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> {{Auth::user()->email}}</li>
+						<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> {{Auth::user()->classroom->first()->name}}</li>
 					</ul>
 				</div>
 				<a href="{{url('select')}}" class="btn btn-warning btn-lg btn-block"> <span class="glyphicon glyphicon-white glyphicon-send"></span> Find Courses</a>

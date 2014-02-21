@@ -26,7 +26,7 @@ Route::get('logout', 'UsersController@logout');
 Route::get('reset', 'UsersController@showReset');
 Route::post('reset', 'UsersController@processReset');
 Route::get('reset/{id}', 'UsersController@completeReset');
-
+Route::post('edit-password', 'UsersController@editPassword');
 /*Login*/
 Route::group(array('before'=>'auth'), function(){
 	Route::get('dashboard', 'UsersController@goToDashboard');
@@ -61,3 +61,6 @@ Route::group(array('before'=>'auth'), function(){
 /*Teacher Login*/
 
 
+
+
+Route::resource('feedbacks', 'FeedbacksController');

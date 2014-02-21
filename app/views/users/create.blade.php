@@ -11,14 +11,32 @@
 	<div class="row">
 		<div class="col-md-8">
 		<p class="lead">Please complete the following fields to register for an account. Required fields are noted by <strong>bold text and an asterisk (*). </strong></p>
-			{{Form::open(array('url'=>'users', 'method'=>'post'))}}
-				<div class="form-group"><label for="nim">NIM*</label><input type="text" name="nim" class="form-control" placeholder="Input with your student identification number (NIM)"></div>
-				<div class="form-group"><label for="username">Username*</label><input name="username" type="text" class="form-control"></div>
+			{{Form::open(array('method'=>'POST','url' => 'users'))}}
+				<div class="form-group">
+					{{Form::label('nim','NIM*')}}
+					{{Form::text('nim',null,array('class'=>'form-control'))}}
+				</div>
+				<div class="form-group">
+					{{Form::label('username','Username*')}}
+					{{Form::text('username',null,array('class'=>'form-control'))}}
+				</div>
 				<div class="form-group"><label for="password">Password*</label><input name="password" type="password" class="form-control"></div>
-				<div class="form-group"><label for="realname">Real Name*</label><input name="realname" type="text" class="form-control" placeholder="example : John Doe"></div>
-				<div class="form-group">{{Form::label('classroom','Class*')}}{{Form::select('classroom',$classes,null,array('class'=>'form-control'))}}</div>
-				<div class="form-group"><label for="email">Email*</label><input name="email" type="text" class="form-control" placeholder="example : email@email.com"></div>
-				<div class="form-group"><label for="phone">Phone*</label><input name="phone" type="text" class="form-control" placeholder="example : 0811111111111"></div>
+				<div class="form-group">
+					{{Form::label('realname','Realname*')}}
+					{{Form::text('realname',null,array('class'=>'form-control'))}}
+				</div>
+				<div class="form-group">
+					{{Form::label('classroom','Class*')}}
+					{{Form::select('classroom',$classes,null,array('class'=>'form-control'))}}
+				</div>
+				<div class="form-group">
+					{{Form::label('email','Email*')}}
+					{{Form::text('email',null,array('class'=>'form-control'))}}
+				</div>
+				<div class="form-group">
+					{{Form::label('phone','Phone*')}}
+					{{Form::text('phone',null,array('class'=>'form-control'))}}
+				</div>
 				<div class="form-group"><input type="submit" class="btn btn-success btn-block btn-lg" value="Create Account"></div>
 			{{Form::close()}}
 		</div>

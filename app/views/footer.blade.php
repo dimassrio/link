@@ -9,11 +9,10 @@
 				<div class="col-md-6">
 					<ul class="horizontal-menu clearfix">
 						<li><a href="">About Us</a></li>
-						<li><a href="">News</a></li>
-						<li><a href="">Contact</a></li>
-						<li><a href="">FAQ</a></li>
 						<li><a href="">Teacher</a></li>
-					</ul>
+						<li><a href="">Contact</a></li>
+						<li><a href="{{url('feedbacks/create')}}">Feedback</a></li>
+					</ul>w 
 					Language Center Online, provide Interactive online lectures from Telkom University Language Center.
 				</div>
 				<div class="col-md-3">

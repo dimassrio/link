@@ -8,7 +8,9 @@
 		</div>
 	</div>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-12">
+			<a href="{{url('users/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New User</a>
+			<hr/>
 				<table class="table table-bordered table-striped">
 					<thead>
 						<th>No</th><th>Realname</th><th>Classrooms</th><th>Status</th><th>Username</th><th>Email</th><th>Phone</th>
@@ -19,7 +21,8 @@
 						<tr>
 							<td rowspan="2">{{$no++}}</td>
 							<td>{{$user->realname}}</td>
-							<td>@if($user->level > 2){{$user->classroom}}@else Not a student @endif </td>
+							<?php $c = $user->classroom->first();?>
+							<td>@if($user->level > 2){{$c['name']}}@else Not a student @endif </td>
 							<td>{{User::getStatus($user->level)}}</td>
 							<td>{{$user->username}}</td>
 							<td>{{$user->email}}</td>
@@ -32,7 +35,7 @@
 						@endforeach
 					</tbody>
 				</table>
-
+				
 				<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-dialog">
 				    <div class="modal-content">
@@ -49,9 +52,7 @@
 				  </div>
 				</div>
 			</div>
-			<div class="col-md-4">
-				<a href="{{url('users/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New User</a>
-			</div>
+				
 		</div>
 	</div>
 @stop
