@@ -20,15 +20,17 @@ Route::get('/', function(){
 		return View::make('index');
 	}
 });
-Route::resource('users', 'UsersController');
+Route::get('register', 'UsersController@create');
+Route::post('register', 'UsersController@store');
 Route::post('login', 'UsersController@login');
 Route::get('logout', 'UsersController@logout');
 Route::get('reset', 'UsersController@showReset');
 Route::post('reset', 'UsersController@processReset');
 Route::get('reset/{id}', 'UsersController@completeReset');
-Route::post('edit-password', 'UsersController@editPassword');
 /*Login*/
 Route::group(array('before'=>'auth'), function(){
+	Route::resource('users', 'UsersController');
+	Route::post('edit-password', 'UsersController@editPassword');
 	Route::get('dashboard', 'UsersController@goToDashboard');
 	Route::get('select', 'CoursesController@selectCourses');
 	Route::get('select/{id}', 'CoursesController@selectChosenCourses');

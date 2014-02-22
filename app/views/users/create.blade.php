@@ -11,7 +11,7 @@
 	<div class="row">
 		<div class="col-md-8">
 		<p class="lead">Please complete the following fields to register for an account. Required fields are noted by <strong>bold text and an asterisk (*). </strong></p>
-			{{Form::open(array('method'=>'POST','url' => 'users'))}}
+			{{Form::open(array('method'=>'POST','url' => 'register'))}}
 				<div class="form-group">
 					{{Form::label('nim','NIM*')}}
 					{{Form::text('nim',null,array('class'=>'form-control'))}}

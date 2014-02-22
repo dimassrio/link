@@ -15,8 +15,7 @@
 				<nav class="collapse navbar-collapse" role="navigation">
 				<ul class="nav navbar-nav">
 					@if(Request::is('/'))
-						<li><a href="">Register</a></li>
-						<li><a href="">Forgot Password</a></li>
+						<li><a href="{{url('register')}}">Register</a></li>
 					@else
 						@if(Auth::check())
 								@if(Auth::user()->level == 0)
