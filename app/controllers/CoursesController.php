@@ -107,7 +107,8 @@ class CoursesController extends BaseController {
 	public function selectCourses()
 	{
 		$date = date('Y-m-d');
-		$data['courses'] = Course::where('start','<=',$date)->where('end', '>=', $date)->get();
+		//$data['courses'] = Course::where('start','<=',$date)->where('end', '>=', $date)->get();
+		$data['courses'] = Course::where('active','=',1)->get();
 		
 		$data['pagetitle'] = "Select Course";
 		return Response::view('select', $data)->header('Cache-Control', 'no-store, no-cache, must-revalidate');
@@ -116,6 +117,7 @@ class CoursesController extends BaseController {
 		$material = Material::where('course', '=', $id)->where('level', '=', '1')->get();
 		return $material->id;
 	}
+	
 	public function selectChosenCourses($id)
 	{
 		$date = date('Y-m-d');
@@ -136,7 +138,6 @@ class CoursesController extends BaseController {
 		}else{
 			return Redirect::to('dashboard')->with('message', 'You have been registered for this Course before.'.$course->name);
 		}
-		
 		
 	}
 	public function enableCourse($id)

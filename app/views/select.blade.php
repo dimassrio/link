@@ -8,15 +8,11 @@
 				@if(isset($courses))
 					@foreach($courses as $course)
 						<div class="media panel panel-default course-{{$course['id']}}">
-							<img src="{{url('uploads').'/'.$course['picture']}}" alt="" class="media-object thumbnail pull-left" width="300px">
-							<div class="course-body panel-body">
-								<h3 class="media-heading course-heading">{{$course['name']}}
-								@if($course['active']==1)
-									<span class="label label-success pull-right">Ready</span>
-								@else
-									<span class="label label-danger pull-right">Disabled</span>
-								@endif
-								</h3>
+							<img src="{{url('uploads').'/'.$course['picture']}}" alt="" class="media-object thumbnail pull-left col-md-3">
+							<div class="course-body panel-body clearfix">
+								<h3 class="media-heading course-heading inline">{{$course['name']}}</h3>
+								<h4><span class="label label-success">Start : {{date('d F, Y', strtotime($course['start']))}}</span>
+								<span class="label label-danger">End : {{date('d F, Y', strtotime($course['end']))}}</span></h4>
 								<hr>
 								<div class="media-body">
 											{{$course['description']}}
@@ -36,7 +32,7 @@
 									@if($course['active']==1)
 										<a href="{{url('select').'/'.$course['id']}}" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-white glyphicon-hand-up"></span> Register this Course</a>			
 									@else
-										<a href="" class="btn btn-danger pull-right" disabled="disabled"><span class="glyphicon glyphicon-white glyphicon-hand-up"></span> Register this Course</a>
+										<a href="" class="btn btn-danger pull-right" disabled="disabled"><span class="glyphicon glyphicon-white glyphicon-hand-up"></span> You can only register between start and end date.</a>
 									@endif
 								@endif
 							</div>
