@@ -9,6 +9,10 @@ class MaterialsController extends BaseController {
 	 */
 	public function index()
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$data['courses'] = Course::all();
 		$data['materials'] = Material::all();
         return View::make('materials.index', $data);
@@ -21,6 +25,10 @@ class MaterialsController extends BaseController {
 	 */
 	public function create()
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$data['courses'] = Course::all();
         return View::make('materials.create', $data);
 	}
@@ -32,7 +40,11 @@ class MaterialsController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$material = Input::all();
 		$dest = 'uploads/quiz/';
 		$file = 'quiz-'.date('Y-m-d').str_random(8).'.json';
@@ -72,6 +84,10 @@ class MaterialsController extends BaseController {
 	 */
 	public function edit($id)
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
         return View::make('materials.edit');
 	}
 
@@ -83,7 +99,10 @@ class MaterialsController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 	}
 
 	/**
@@ -94,7 +113,9 @@ class MaterialsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
 	}
 
 }

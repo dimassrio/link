@@ -23,7 +23,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4 panel panel-default">
+			<div class="col-md-4">
+			<div class="row panel panel-default">
 				<h4 class="page-header text-center">LOGIN</h4>
 				<div id="login-form" class="login-form clearfix panel-body">
 				{{Form::open(array('url'=>'login'))}}
@@ -42,15 +43,21 @@
 				{{Form::close()}}
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
+			<div class="row">
+			<div class="col-md-12">
 				<h4>Not Registered Yet?</h4>
 				<a href="{{url('register')}}">Sign up today!</a>
 				<h4>Forgot Your Password?</h4>
 				<a href="">Forget Password</a>
 			</div>
 		</div>
+			</div>
+			<div class="col-md-8">
+				<iframe src="https://onedrive.live.com/embed?cid=CB72496105ED14A0&resid=CB72496105ED14A0%212157&authkey=AJefBtF7QglIqZw&em=2" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+				Cannot see the content? Click <a href="http://1drv.ms/1gCOQHP">here</a> to download the tutorial.
+			</div>
+		</div>
+		
 	</div>
 @stop
 

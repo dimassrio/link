@@ -27,6 +27,9 @@ Route::get('logout', 'UsersController@logout');
 Route::get('reset', 'UsersController@showReset');
 Route::post('reset', 'UsersController@processReset');
 Route::get('reset/{id}', 'UsersController@completeReset');
+Route::get('contact',function(){
+	return View::make('contact');
+});
 /*Login*/
 Route::group(array('before'=>'auth'), function(){
 	Route::resource('users', 'UsersController');

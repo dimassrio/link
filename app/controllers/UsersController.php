@@ -9,6 +9,9 @@ class UsersController extends BaseController {
 	 */
 	public function index()
 	{
+		if(!User::isTeacher()){
+			return Redirect::to('dashboard');
+		}
 		$data['users'] = User::all();
         return View::make('users.index', $data);
 	}
@@ -107,6 +110,16 @@ class UsersController extends BaseController {
 	 */
 	public function edit($id)
 	{
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+
+		if (!User::isTeacher()) {
+			if($id != Auth::user()->id){
+				return Redirect::to('dashboard');
+			}
+		}
+
 		$data['user'] = User::find($id);
 		$classes = Classroom::where('active','=',1)->get();
 		$data['classes'] = array();
@@ -126,6 +139,11 @@ class UsersController extends BaseController {
 	{
 		if(!Auth::check()){
 			return Redirect::to('/');
+		}
+		if (!User::isTeacher()) {
+			if($id != Auth::user()->id){
+				return Redirect::to('dashboard');
+			}
 		}
 		$validator = Validator::make(
 			array(
@@ -186,6 +204,9 @@ class UsersController extends BaseController {
 			return Redirect::to('/');
 		}
 
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
 		$user = User::find($id);
 		$user->delete();
 

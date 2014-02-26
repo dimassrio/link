@@ -24,6 +24,10 @@ class CoursesController extends BaseController {
 	 */
 	public function create()
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$data['pagetitle'] = "Create new Course.";
         return Response::view('courses.create', $data)->header('Cache-Control', 'no-store, no-cache, must-revalidate');;
 	}
@@ -35,6 +39,10 @@ class CoursesController extends BaseController {
 	 */
 	public function store()
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		//var_dump(Input::file('picture')->getClientOriginalName());
 		$course = Input::all();
 		$dest = 'uploads/';
@@ -76,6 +84,10 @@ class CoursesController extends BaseController {
 	 */
 	public function edit($id)
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
         return View::make('courses.edit');
 	}
 
@@ -87,7 +99,11 @@ class CoursesController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 	}
 
 	/**
@@ -98,6 +114,10 @@ class CoursesController extends BaseController {
 	 */
 	public function destroy($id)
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$course = Course::find($id);
 		$course->delete();
 

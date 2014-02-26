@@ -9,13 +9,16 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand hidden-xs visible-sm visible-lg visible-md" href="{{url()}}"><img src="{{asset('assets/image/header-logo-small.png')}}" alt=""></a>
+						<a class="navbar-brand" href="{{url()}}"><img src="{{asset('assets/image/header-logo-small.png')}}" alt=""></a>
+
 					</div>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
+
 				<ul class="nav navbar-nav">
 					@if(Request::is('/'))
 						<li><a href="{{url('register')}}">Register</a></li>
+						<li><a href="{{url('contact')}}">Help</a></li>
 					@else
 						@if(Auth::check())
 								@if(Auth::user()->level == 0)

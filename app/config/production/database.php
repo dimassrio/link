@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => $_ENV['mysql_host'],
-			'database'  => $_ENV['mysql_database'],
-			'username'  => $_ENV['mysql_username'],
-			'password'  => $_ENV['mysql_password'],
+			'host'      => 'localhost',
+			'database'  => 'zadmin_link',
+			'username'  => 'link',
+			'password'  => 'u7u3y4e3u',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

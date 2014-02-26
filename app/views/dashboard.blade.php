@@ -25,6 +25,10 @@
 								<hr>
 								<a href="{{url('courses').'/'.$c->id}}" class="btn btn-primary"><span class="glyphicon glyphicon-white glyphicon-folder-open"></span> View Course</a>
 							</div>
+							<hr>
+							<div class="media-footer">
+								This course is available from <strong>{{date('d F Y', strtotime($c->start))}}</strong> until <strong>{{date('d F Y', strtotime($c->end))}}</strong>.
+							</div>
 						</div>
 					@endforeach
 			</div>

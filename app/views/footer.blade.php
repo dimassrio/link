@@ -12,7 +12,7 @@
 						<li><a href="">Teacher</a></li>
 						<li><a href="">Contact</a></li>
 						<li><a href="{{url('feedbacks/create')}}">Feedback</a></li>
-					</ul>w 
+					</ul>
 					Language Center Online, provide Interactive online lectures from Telkom University Language Center.
 				</div>
 				<div class="col-md-3">

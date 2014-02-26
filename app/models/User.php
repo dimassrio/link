@@ -48,6 +48,22 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
+	
+	public static function isTeacher(){
+		if (Auth::user()->level>2) {
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	public static function isAdmin(){
+		if (Auth::user()->level>0) {
+			return false;
+		}else{
+			return true;
+		}
+	}
 
 	public static function getIdFromNim($nim){
 		$u = User::where('nim', '=', $nim)->get();

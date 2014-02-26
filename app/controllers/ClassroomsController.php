@@ -9,6 +9,10 @@ class ClassroomsController extends BaseController {
 	 */
 	public function index()
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$data['classes'] = Classroom::all()->sortBy('name');
 		$data['teacher'] = array();
 		foreach ($data['classes'] as $class) {
@@ -25,6 +29,10 @@ class ClassroomsController extends BaseController {
 	 */
 	public function create()
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$teacher = User::where('level','=',2)->get();
 		$arr = array();
 		foreach ($teacher as $t) {
@@ -41,6 +49,10 @@ class ClassroomsController extends BaseController {
 	 */
 	public function store()
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$data = new Classroom;
 		$data->name = Input::get('name');
 		$data->number = 0;
@@ -71,6 +83,10 @@ class ClassroomsController extends BaseController {
 	 */
 	public function edit($id)
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$data['classroom'] = Classroom::find($id);
 		$teacher = User::where('level','=',2)->get();
 		$arr = array();
@@ -89,6 +105,10 @@ class ClassroomsController extends BaseController {
 	 */
 	public function update($id)
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+
 		$data = Classroom::find($id);
 		$data->name = Input::get('name');
 		$data->number = 0;
@@ -109,6 +129,9 @@ class ClassroomsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
 		$classroom = Classroom::find($id);
 		$classroom->delete();
 
@@ -117,6 +140,10 @@ class ClassroomsController extends BaseController {
 	}
 
 	public function toggleStatus($id){
+		if (!User::isAdmin()) {
+				return Redirect::to('dashboard');
+		}
+		
 		$cl = Classroom::find($id);
 		if ($cl->active == 0) {
 			$cl->active = 1;
