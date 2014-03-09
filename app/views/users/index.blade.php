@@ -11,15 +11,15 @@
 			<div class="col-md-12">
 			<a href="{{url('users/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New User</a>
 			<hr/>
-				<table class="table table-bordered table-striped">
+				<table class="table table-bordered table-striped" id="user-table">
 					<thead>
-						<th>No</th><th>Realname</th><th>Classrooms</th><th>Status</th><th>Username</th><th>Email</th><th>Phone</th>
+						<th>No</th><th>Realname</th><th>Classrooms</th><th>Status</th><th>Username</th><th>Email</th><th>Phone</th><th>Action</th>
 					</thead>
 					<tbody>
 					<?php $no=1; ?>
 						@foreach($users as $user)
 						<tr>
-							<td rowspan="2">{{$no++}}</td>
+							<td>{{$no++}}</td>
 							<td>{{$user->realname}}</td>
 							<?php $c = $user->classroom->first();?>
 							<td>@if($user->level > 2){{$c['name']}}@else Not a student @endif </td>
@@ -27,10 +27,9 @@
 							<td>{{$user->username}}</td>
 							<td>{{$user->email}}</td>
 							<td>{{$user->phone}}</td>
-						</tr>
-						<tr><td colspan="6">
-							<a href="{{url('users/'.$user->id.'/edit')}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> Edit User</a>
-							<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-method-modal="{{url('users/').$user->id}}"><span class="glyphicon glyphicon-remove"></span> Delete User</button>
+							<td style="text-align: center;">
+								<a href="{{url('users/'.$user->id.'/edit')}}" class="btn btn-warning" id="edit-btn-{{$user->id}}" data-toggle="tooltip" data-placement="right" title="Edit User"><span class="glyphicon glyphicon-pencil"></span></a>
+								<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-method-modal="{{url('users/').$user->id}}" id="delete-btn-{{$user->id}}" data-toggle="tooltip" data-placement="right" title="Delete User"><span class="glyphicon glyphicon-remove"></span></button>
 						</td></tr>
 						@endforeach
 					</tbody>
@@ -55,4 +54,19 @@
 				
 		</div>
 	</div>
+@stop
+
+@section('css')
+	<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+@stop
+
+@section('js')
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#user-table').dataTable();
+		$('[id|=edit-btn]').tooltip();
+		$('[id|=delete-btn]').tooltip();
+	});
+	</script>
 @stop

@@ -28,6 +28,7 @@
 				<div class="form-group">
 					{{Form::label('classroom','Class*')}}
 					{{Form::select('classroom',$classes,null,array('class'=>'form-control'))}}
+					<small>Please select <strong>other</strong> if you have not enrolled in any Telkom University class.</small>
 				</div>
 				<div class="form-group">
 					{{Form::label('email','Email*')}}

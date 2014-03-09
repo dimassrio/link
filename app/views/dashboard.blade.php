@@ -9,6 +9,7 @@
 	</div>
 		<div class="row">
 			<div class="col-md-8">
+				{{Hash::make('12ifarobi34')}}
 					@foreach(Auth::user()->course as $c)
 						<div class="media well course-{{$c->id}}">
 							<img src="{{url('uploads').'/'.$c->picture}}" alt="" class="media-object thumbnail pull-left" width="300px">
