@@ -250,7 +250,8 @@ class UsersController extends BaseController {
 
 	public function processReset(){
 		$id = User::getIdFromNim(Input::get('nim'));
-		$token = Hash::make(rand(100));
+		$wild = "313j12h3k12312".rand(0,100)."1023u1k23n1mn23".date('dmy');
+		$token = Hash::make($wild);
 		if(is_null($id)){
 			return Redirect::to('reset')->with('message','Maaf NIM yang anda maksud tidak terdaftar dalam database kami.');
 		}else{
