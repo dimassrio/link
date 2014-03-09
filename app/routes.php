@@ -27,6 +27,8 @@ Route::get('logout', 'UsersController@logout');
 Route::get('reset', 'UsersController@showReset');
 Route::post('reset', 'UsersController@processReset');
 Route::get('reset/{id}', 'UsersController@completeReset');
+Route::get('reset/{id}/confirmation/{token}', 'UsersController@showChangePassword');
+Route::post('reset/{id}/confirmation/{token}', 'UsersController@changePassword');
 Route::get('contact',function(){
 	return View::make('contact');
 });

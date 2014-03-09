@@ -54,7 +54,7 @@
 			</div>
 			<div class="col-md-8">
 				<iframe src="https://onedrive.live.com/embed?cid=CB72496105ED14A0&resid=CB72496105ED14A0%212157&authkey=AJefBtF7QglIqZw&em=2" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
-				Cannot see the content? Click <a href="http://1drv.ms/1gCOQHP">here</a> to download the tutorial.
+				<small>Cannot see the content? Click <a href="http://1drv.ms/1gCOQHP">here</a> to download the tutorial.</small>
 			</div>
 		</div>
 		

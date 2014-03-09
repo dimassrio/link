@@ -250,21 +250,22 @@ class UsersController extends BaseController {
 
 	public function processReset(){
 		$id = User::getIdFromNim(Input::get('nim'));
+		$token = Hash::make(rand(100));
 		if(is_null($id)){
 			return Redirect::to('reset')->with('message','Maaf NIM yang anda maksud tidak terdaftar dalam database kami.');
 		}else{
 			$user = User::find($id);
-			$password = Input::get('nim') * rand(5,10);
-			$user->password = Hash::make(''.$password);
-			$user->save();
-
-			$data['user'] = User::find($id);
-			$data['password'] = $password;
 			
-			Mail::send('resetmail', $data, function($message) use($user){
-    			$message->to( $user->email, $user->realname)->subject('Online Language Center Reset Password');
-			});
-
+			if($user->email == Input::get('email')){
+				DB::table('reset')->insert(array('user_id'=> $id, 'value'=>$token));
+				$data['url'] = "http://kusmayanti.net/reset/"+$id+'/confirmation/'+$token;
+				$data['user'] = $user;
+				Mail::send('resetmail', $data, function($message) use($user){
+	    			$message->to( $user->email, $user->realname)->subject('Online Language Center Reset Password');
+				});	
+			}else{
+				return Redirect::to('/')->with('message', 'Maaf email yang anda kirimkan salah.');
+			}	
 			return Redirect::to('/')->with('message', 'Password baru anda telah kami kirimkan.');
 		}
 	}
@@ -316,6 +317,15 @@ class UsersController extends BaseController {
 			return Redirect::to('dashboard')->with('message', 'Edit process completed.');
 		}else{
 			return Redirect::to('users/'.$id.'/edit')->withErrors($validator);
+		}
+	}
+
+	public function showChangePassword($id, $token){
+		$reset = DB::table('reset')->where('user_id',$id)->where('value', $token)->first();
+		if($reset!=null){
+			echo 'next';
+		}else{
+			echo 'fail'l
 		}
 	}
 }
