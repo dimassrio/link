@@ -325,7 +325,7 @@ class UsersController extends BaseController {
 		if($reset!=null){
 			echo 'next';
 		}else{
-			echo 'fail'l
+			echo 'fail';
 		}
 	}
 }
