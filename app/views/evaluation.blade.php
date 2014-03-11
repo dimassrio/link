@@ -37,8 +37,14 @@
 						<th>Access</th>
 					</thead>
 					<tbody>
-					<?php $no = 1; ?>
+					<?php $no = 1; $unpick = array();?>
 						@foreach($users as $u)
+						@if($u['material_id'] == null)
+							@if(!in_array($u, $unpick))
+								<?php $unpick[] = $u; ?>
+							@endif
+						@else
+
 						<tr>
 							<td>{{$no++}}</td>
 							<td>{{$u['nim']}}</td>
@@ -47,11 +53,26 @@
 							<td>{{$u['value']}}</td>
 							<td>{{$u['access']}}</td>
 						</tr>
+						@endif
 						@endforeach
 					</tbody>
 				</table>
 				@endif
-				
+				<hr>
+				<h4>Siswa yang belum mengambil modul ini</h4>
+				<table class="table table-bordered table-striped">
+					<thead><th>No</th><th>NIM</th><th>Name</th></thead>
+					<tbody>
+					<?php $n = 1; ?>
+						@foreach($unpick as $x)
+						<tr>
+							<td>{{$n++}}</td>
+							<td>{{$x['nim']}}</td>
+							<td>{{$x['name']}}</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

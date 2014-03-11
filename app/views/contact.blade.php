@@ -9,9 +9,9 @@
 				
 				<address>
 					<strong>Dimas Satrio Hutomo</strong><br>
-					<abbr title="Phone">P:</abbr> (0812) 276-10611 <br/>
+					<!-- <abbr title="Phone">P:</abbr> (0812) 276-10611 <br/> -->
 					<a href="mailto:#"> dimassrio@outlook.com </a> <br/>
-					<a href="http://twitter.com/dimassrio">@dimassrio</a> 
+					<p>Fast Respond : <a href="http://twitter.com/dimassrio">@dimassrio</a> </p>
 				</address>
 				
 			</div>
