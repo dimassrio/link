@@ -30,12 +30,6 @@
 			</div>
 		</div>
 </header>
-@if(Session::has('message'))
-	<div class="container alert alert-danger">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		<p class="alert">{{ Session::get('message') }}</p>
-	</div>
-@endif
 
 @if(!sizeof($errors->all())==0)
 	<div class="container alert alert-danger">

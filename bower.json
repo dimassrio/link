@@ -2,6 +2,6 @@
 	"name": "Laravel 4 - Laravel Grunt Asset Management Package",
 	"version": "0.0.1",
 	"dependencies": {
-		"jquery": "~1.10.2","jquery.ui": "~1.10.4","bootstrap": "3.1.0","holderjs": "~2.3.0"
+		"jquery": "~1.10.2","jquery.ui": "~1.10.4","bootstrap": "3.1.0","holderjs": "~2.3.0","alertify.js":"master"
 	}
 }

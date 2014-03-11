@@ -107,7 +107,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'JasonNZ\LaravelGrunt\LaravelGruntServiceProvider',
+		'Krucas\Notification\NotificationServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider'
+
 
 
 	),
@@ -156,6 +158,7 @@ return array(
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
 		'HTML'            => 'Illuminate\Support\Facades\HTML',
 		'Input'           => 'Illuminate\Support\Facades\Input',
+		'Notification'    => 'Krucas\Notification\Facades\Notification',
 		'Lang'            => 'Illuminate\Support\Facades\Lang',
 		'Log'             => 'Illuminate\Support\Facades\Log',
 		'Mail'            => 'Illuminate\Support\Facades\Mail',
