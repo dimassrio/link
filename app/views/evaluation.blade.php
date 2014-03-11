@@ -57,7 +57,7 @@
 						@endforeach
 					</tbody>
 				</table>
-				@endif
+				
 				<hr>
 				<h4>Siswa yang belum mengambil modul ini</h4>
 				<table class="table table-bordered table-striped">
@@ -73,6 +73,7 @@
 						@endforeach
 					</tbody>
 				</table>
+				@endif
 			</div>
 		</div>
 	</div>
