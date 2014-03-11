@@ -16,23 +16,8 @@
 				<nav class="collapse navbar-collapse" role="navigation">
 
 				<ul class="nav navbar-nav">
-					@if(Request::is('/'))
-						<li><a href="{{url('register')}}">Register</a></li>
-						<li><a href="{{url('contact')}}">Help</a></li>
-					@else
-						@if(Auth::check())
-								@if(Auth::user()->level == 0)
-									<li><a href="{{url('users')}}">Users</a></li>
-									<li><a href="{{url('courses')}}">Course</a></li>
-									<li><a href="{{url('materials')}}">Material</a></li>
-									<li><a href="{{url('classrooms')}}">Class</a></li>
-								@else
-									<a href="{{url('select')}}" class="navbar-btn btn btn-primary"><span class="glyphicon glyphicon-white glyphicon-send"></span> Find Course</a>
-									<a href="{{url('users').'/'.Auth::user()->id.'/edit'}}" class="navbar-btn btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a>
-								@endif
-						@endif
+					@include('header-menu')
 				</ul>
-					@endif
 				@if(Auth::check())
 					<div class="navbar-right">
 						<a href="{{url('logout')}}" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-white glyphicon-log-out"></span> Logout</a>

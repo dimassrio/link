@@ -29,7 +29,7 @@
 							<td>{{$user->phone}}</td>
 							<td style="text-align: center;">
 								<a href="{{url('users/'.$user->id.'/edit')}}" class="btn btn-warning" id="edit-btn-{{$user->id}}" data-toggle="tooltip" data-placement="right" title="Edit User"><span class="glyphicon glyphicon-pencil"></span></a>
-								<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-method-modal="{{url('users/').$user->id}}" id="delete-btn-{{$user->id}}" data-toggle="tooltip" data-placement="right" title="Delete User"><span class="glyphicon glyphicon-remove"></span></button>
+								<button class="btn btn-danger btn-smalls" data-toggle="modal" data-target="#deleteModal" data-method-modal="{{url('users/').$user->id}}" id="delete-btn-{{$user->id}}" data-toggle="tooltip" data-placement="right" title="Delete User"><span class="glyphicon glyphicon-remove"></span></button>
 						</td></tr>
 						@endforeach
 					</tbody>

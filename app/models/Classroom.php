@@ -14,4 +14,9 @@ class Classroom extends Eloquent {
 	{
 		return $this->belongsToMany('User','classroom_user')->withPivot('status');
 	}
+
+	public function userd()
+	{
+		return $this->belongsToMany('User','classroom_user')->where('status',3);
+	}
 }

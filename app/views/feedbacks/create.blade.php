@@ -16,7 +16,7 @@
 				</div>
 				<div class="form-group">
 					{{Form::label('content','Content*')}}
-					{{Form::text('content',null,array('class'=>'form-control'))}}
+					{{Form::textarea('content',null,array('class'=>'form-control'))}}
 				</div>
 				<div class="form-group"><input type="submit" class="btn btn-success btn-block btn-lg" value="Create Account"></div>
 			{{Form::close()}}

@@ -50,18 +50,24 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 	
 	public static function isTeacher(){
-		if (Auth::user()->level>2) {
-			return false;
-		}else{
+		if (Auth::user()->level < 3) {
 			return true;
+		}else{
+			return false;
 		}
 	}
-
-	public static function isAdmin(){
-		if (Auth::user()->level>0) {
-			return false;
-		}else{
+	public static function isKoordinator(){
+		if (Auth::user()->level<2) {
 			return true;
+		}else{
+			return false;
+		}
+	}
+	public static function isAdmin(){
+		if (Auth::user()->level<1) {
+			return true;
+		}else{
+			return false;
 		}
 	}
 

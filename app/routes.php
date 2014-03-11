@@ -56,8 +56,8 @@ Route::group(array('before'=>'auth'), function(){
 	Route::resource('classrooms', 'ClassroomsController');
 	Route::get('classrooms/{id}/toggle', 'ClassroomsController@toggleStatus');
 
-	Route::get('evaluation', 'UsersController@evaluation');
-	Route::post('evaluation', 'UsersController@processEvaluation');
+	Route::get('evaluation', 'UsersController@init_evaluation');
+	Route::post('evaluation', 'UsersController@evaluation');
 
 	Route::get('teacher', 'UsersController@teacherIndex');
 	Route::get('teacher/allocation', 'UsersController@teacherCreate');

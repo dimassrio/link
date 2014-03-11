@@ -11,7 +11,10 @@ class Material extends Eloquent {
 		$val2 = explode("&", $val1[1]);
 		return $val2[0];
 	}
-
+	public static function getNameFromId($id){
+		$name = Material::find($id);
+		return $name['name'];
+	}
 	public static function prepareReference($text)
 	{
 	$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
