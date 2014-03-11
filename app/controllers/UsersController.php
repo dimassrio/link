@@ -336,13 +336,11 @@ class UsersController extends BaseController {
 			$material = Material::where('course', Input::get('course'))->get()->lists('id');
 			$value = array();
 			foreach ($data['users'] as $u) {
-				$safe = array();
-				$safe['nim'] = $u['attributes']['nim'];
-				$safe['name'] = $u['attributes']['realname'];
-				$safe['data'] = array();
 				foreach ($material as $m) {
 					$o = DB::table('material_user')->where('user_id', $u['attributes']['id'])->where('material_id',$m)->get();
 					$obj = array();
+					$obj['nim'] = $u['attributes']['nim'];
+					$obj['name'] = $u['attributes']['realname'];
 					$obj["id"] = 0;
 					$obj["user_id"] = 0;
 					$obj["material_id"] = 0;
@@ -353,18 +351,14 @@ class UsersController extends BaseController {
 						$obj["user_id"] = $o[0]->user_id;
 						$obj["material_id"] = $o[0]->material_id;
 						$obj['value'] = $o[0]->value;
-						$obj['access'] = $o[0]->access;
+						$obj['access'] = date('d-M-Y', strtotime($o[0]->access));
 					}
-					
-					array_push($safe['data'], $obj);
+					array_push($value, $obj);
 				}
-
-				array_push($value, $safe);
 			}
 			
 		}
 		$data['users'] = $value;
-		
 		return Response::view('evaluation', $data);
 	}
 

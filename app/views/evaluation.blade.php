@@ -32,7 +32,9 @@
 						<th>No</th>
 						<th>NIM</th>
 						<th>Name</th>
-						<th colspan="3">Evaluation</th>
+						<th>Material Name</th>
+						<th>Value</th>
+						<th>Access</th>
 					</thead>
 					<tbody>
 					<?php $no = 1; ?>
@@ -41,16 +43,9 @@
 							<td>{{$no++}}</td>
 							<td>{{$u['nim']}}</td>
 							<td>{{$u['name']}}</td>
-							<td>
-							@foreach($u['data'] as $a)
-								<div>
-									<h4>{{Material::getNameFromId($a['material_id'])}}</h4>
-									<p class="lead">Value : {{$a['value']}}</p>
-									<p class="text-danger"> Access Date : {{$a['access']}}</p>
-								</div>
-								<hr>
-							@endforeach
-							</td>
+							<td>{{Material::getNameFromId($u['material_id'])}}</td>
+							<td>{{$u['value']}}</td>
+							<td>{{$u['access']}}</td>
 						</tr>
 						@endforeach
 					</tbody>
@@ -60,4 +55,19 @@
 			</div>
 		</div>
 	</div>
+@stop
+
+@section('css')
+	<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+@stop
+
+@section('js')
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#user-table').dataTable();
+		$('[id|=edit-btn]').tooltip();
+		$('[id|=delete-btn]').tooltip();
+	});
+	</script>
 @stop
