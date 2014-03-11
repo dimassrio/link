@@ -4,12 +4,12 @@
 	<div class="container">
 		<div class="row"><h1 class="page-header">List of Classes</h1></div>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-2">
 			<h4>Need a new class?</h4>
 				<a href="{{url('classrooms/create')}}" class="btn btn-success">Create New Classes</a>
 			</div>
-			<div class="col-md-8">
-				<table class="table table-bordered table-stripped">
+			<div class="col-md-10">
+				<table class="table table-bordered table-striped" id="classroom-table">
 					<thead>
 						<th>No</th>
 						<th>Class Name</th>
@@ -43,19 +43,35 @@
 	</div>
 
 	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-				      </div>
-				      <div class="modal-body">
-				        Are you really sure you want to delete this item?
-				      </div>
-				      <div class="modal-footer">
-				      </div>
-				    </div>
-				  </div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					Are you really sure you want to delete this item?
+				</div>
+					<div class="modal-footer">
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+@stop
+
+@section('css')
+	<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+@stop
+
+@section('js')
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#classroom-table').dataTable();
+			$('[id|=edit-btn]').tooltip();
+			$('[id|=delete-btn]').tooltip();
+		});
+	</script>
+	{{HTML::script(asset('assets/js/delete.modal.js'))}}
 @stop

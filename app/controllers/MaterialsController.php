@@ -15,6 +15,7 @@ class MaterialsController extends BaseController {
 
 		$data['courses'] = Course::all();
 		$data['materials'] = Material::all();
+		$data['pagetitle'] = "List of Material";
         return View::make('materials.index', $data);
 	}
 
