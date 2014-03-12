@@ -52,14 +52,19 @@ class MaterialsController extends BaseController {
 
 		$material = Input::all();
 		$dest = 'uploads/quiz/';
-		$file = 'quiz-'.date('Y-m-d').str_random(8).'.json';
-		$ups = Input::file('quiz')->move($dest, $file);
-
 		$data = new Material;
+		if (!is_null(Input::file('quiz'))) {
+			$file = 'quiz-'.date('Y-m-d').str_random(8).'.json';
+			$ups = Input::file('quiz')->move($dest, $file);	# code...
+			$data->quiz = $file;
+		}else{
+			$data->quiz = null;
+		}
+		
 		$data->name = Input::get('name');
 		$data->content = Input::get('content');
 		$data->video = Input::get('video');
-		$data->quiz = $file;
+		
 		$data->course = Input::get('course');
 
 		$level = Material::where('course', '=', Input::get('course'))->max('level');
@@ -116,19 +121,20 @@ class MaterialsController extends BaseController {
 		}
 
 		$material = Input::all();
+		$data = Material::find($id);
+		$dest = 'uploads/quiz/';
 		if (!is_null(Input::file('quiz'))) {
-			$dest = 'uploads/quiz/';
 			$file = 'quiz-'.date('Y-m-d').str_random(8).'.json';
 			$ups = Input::file('quiz')->move($dest, $file);
+			$data->quiz = $file;
 		}else{
 
 		}
 		
-		$data = Material::find($id);
+		
 		$data->name = Input::get('name');
 		$data->content = Input::get('content');
 		$data->video = Input::get('video');
-		$data->quiz = $file;
 		$data->course = Input::get('course');
 
 		$level = Material::where('course', '=', Input::get('course'))->max('level');
