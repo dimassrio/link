@@ -25,7 +25,7 @@
 							<td>{{$material['name']}}</td>
 							<td>@if(!$material['video']=="")Available @else Not Available @endif</td>
 							<td>@if(!$material['quiz']=="")Available @else Not Available @endif</td>
-							<td>{{Course::find($material['course'])['name']}}</td>
+							<td><?php $cou = Course::find($material['course']); ?>{{$cou['name']}}</td>
 							<td>{{$material['level']}}</td>
 							<td>
 								<a href="{{url('materials/'.$material['id'].'/edit')}}" class="btn btn-success" id="edit-btn" data-toggle="tooltip" data-placement="right" title="Edit Material"><span class="glyphicon glyphicon-wrench"></span></a>

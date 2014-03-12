@@ -13,7 +13,7 @@
 	"require": {
 		"laravel/framework": "4.1.*",		
 		"jason-morton-nz/laravel-grunt": "dev-master",
-		"way/generators": "dev-master",
+		//"way/generators": "dev-master",
 		"thujohn/pdf": "dev-master",
 		"edvinaskrucas/notification": "2.*"	
 

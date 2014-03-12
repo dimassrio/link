@@ -108,7 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'JasonNZ\LaravelGrunt\LaravelGruntServiceProvider',
 		'Krucas\Notification\NotificationServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider'
+		//'Way\Generators\GeneratorsServiceProvider'
 
 
 
