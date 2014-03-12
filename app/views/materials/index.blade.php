@@ -28,8 +28,9 @@
 							<td>{{Course::find($material['course'])['name']}}</td>
 							<td>{{$material['level']}}</td>
 							<td>
+								<a href="{{url('materials/'.$material['id'].'/edit')}}" class="btn btn-success" id="edit-btn" data-toggle="tooltip" data-placement="right" title="Edit Material"><span class="glyphicon glyphicon-wrench"></span></a>
 								<a href="" class="btn btn-danger" id="delete-btn" data-toggle="tooltip" data-placement="right" title="Delete Material"><span class="glyphicon glyphicon-remove"></span></a>
-								<a href="" class="btn btn-success" id="edit-btn" data-toggle="tooltip" data-placement="right" title="Edit Material"><span class="glyphicon glyphicon-wrench"></span></a>
+								
 							</td>
 					</tr>
 						<?php $no++; ?>

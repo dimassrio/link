@@ -4,32 +4,34 @@
 	<div class="container">
 	<div class="row">
 		<div class="col-md-12">
-				<h1 class="page-header">Course Taken</h1>
+				<h1 class="page-header">Course Registered</h1>
 		</div>
 	</div>
 		<div class="row">
 			<div class="col-md-8">
 				
 					@foreach(Auth::user()->course as $c)
-						<div class="media well course-{{$c->id}}">
+					<div class="course-{{$c->id}}"></div>
+
+						<div class="media course-wrapper">
 							<img src="{{url('uploads').'/'.$c->picture}}" alt="" class="media-object thumbnail pull-left" width="300px">
-							<h3 class="media-heading">{{$c->name}}
 							@if($c->active==1)
-								<span class="label label-success">Ready</span>
+							<h2 class="course-heading page-header"><a href="{{url('courses').'/'.$c->id}}"> {{$c->name}}</a></h2>
 							@else
-								<span class="label label-danger">Disabled</span>
+							<h2 class="course-heading page-header">{{$c->name}}</h2>
 							@endif
-							</h3>
-							<hr>
-							<div class="media-body">
-								{{$c->description}}
-								<hr>
-								<a href="{{url('courses').'/'.$c->id}}" class="btn btn-primary"><span class="glyphicon glyphicon-white glyphicon-folder-open"></span> View Course</a>
+							<div class="course-body">
+								<p> {{$c->description}}</p>
+								
+							@if($c->active==1)
+							<a href="{{url('courses').'/'.$c->id}}" class="btn btn-success"><span class="glyphicon glyphicon-white glyphicon-folder-open"></span> View Course</a>
+							@else
+							<a href="" class="btn btn-danger" disabled="disabled"><span class="glyphicon glyphicon-white glyphicon-folder-open"></span>Course Disabled</a>
+							@endif
 							</div>
-							<hr>
-							<div class="media-footer">
+						</div>
+						<div class="course-footer">
 								This course is available from <strong>{{date('d F Y', strtotime($c->start))}}</strong> until <strong>{{date('d F Y', strtotime($c->end))}}</strong>.
-							</div>
 						</div>
 					@endforeach
 			</div>

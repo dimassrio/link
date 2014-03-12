@@ -11,11 +11,7 @@
 				<div class="form-group"><label for="">Video</label><input type="text" name="video" class="form-control"></div>
 				<div class="form-group"><label for="">Quiz</label><input type="file" name="quiz" class="form-control"></div>
 				<div class="form-group"><label for="">Course</label>
-				<select name="course" id="" class="form-control">
-					@foreach($courses as $course)
-						<option value="{{$course['id']}}">{{$course['name']}}</option>
-					@endforeach
-				</select>
+					{{Form::select('course', $courses, $selected, array('class'=>'form-control'))}}
 				</div>
 				<div class="form-group"><input type="submit" value="Submit" class="btn btn-success btn-lg"></div>
 				{{Form::close()}}

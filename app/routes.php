@@ -52,7 +52,9 @@ Route::group(array('before'=>'auth'), function(){
 	Route::get('courses/{idc}/result/printpdf', 'CoursesController@createPdf');
 
 	Route::resource('materials', 'MaterialsController');
-
+	Route::get('materials/create/{id?}','MaterialsController@create');
+	Route::get('quizbuilder','MaterialsController@quizBuilder');
+	Route::post('quizbuilder','MaterialsController@quizProcess');
 	Route::resource('classrooms', 'ClassroomsController');
 	Route::get('classrooms/{id}/toggle', 'ClassroomsController@toggleStatus');
 
@@ -62,7 +64,6 @@ Route::group(array('before'=>'auth'), function(){
 	Route::get('teacher', 'UsersController@teacherIndex');
 	Route::get('teacher/allocation', 'UsersController@teacherCreate');
 	Route::post('teacher/allocation', 'UsersController@teacherProcess');
-
 	
 });
 /*Teacher Login*/

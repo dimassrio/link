@@ -13,7 +13,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<div class="list-groups"></div>
+				<img src="{{url('uploads').'/'.$courses->picture}}" alt="{{$courses['name']}} picture." class="thumbnail">
 			</div>
 			<div class="col-md-8">
 				<h1 class="page-header">{{$pagetitle}}</h1>

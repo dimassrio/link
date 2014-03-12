@@ -28,7 +28,7 @@
 										@else
 											<a href="{{url('courses/enable').'/'.$course['id']}}" class="btn btn-success" id="enable-btn" data-toggle="tooltip" data-placement="right" title="Enable this Course"><span class="glyphicon glyphicon-white glyphicon-off"></span></a>
 										@endif
-										<a href="{{url('courses').'/'.$course['id']}}" data-method="delete" class="btn btn-warning" id="edit-btn" data-toggle="tooltip" data-placement="right" title="Edit Course"><span class="glyphicon glyphicon-white glyphicon-pencil" ></span></a>
+										<a href="{{url('courses').'/'.$course['id'].'/edit'}}" class="btn btn-warning" id="edit-btn" data-toggle="tooltip" data-placement="right" title="Edit Course"><span class="glyphicon glyphicon-white glyphicon-pencil" ></span></a>
 										<a href="{{url('courses').'/'.$course['id']}}" data-method="delete" class="btn btn-danger" id="delete-btn" data-toggle="tooltip" data-placement="right" title="Delete Course"><span class="glyphicon glyphicon-white glyphicon-trash" ></span></a>
 										</td>
 								</tr>

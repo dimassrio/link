@@ -29,7 +29,7 @@ class CoursesController extends BaseController {
 		}
 
 		$data['pagetitle'] = "Create new Course.";
-        return Response::view('courses.create', $data)->header('Cache-Control', 'no-store, no-cache, must-revalidate');;
+        return Response::view('courses.create', $data)->header('Cache-Control', 'no-store, no-cache, must-revalidate');
 	}
 
 	/**
@@ -45,21 +45,23 @@ class CoursesController extends BaseController {
 
 		//var_dump(Input::file('picture')->getClientOriginalName());
 		$course = Input::all();
-		$dest = 'uploads/';
-		$file = date('dmY').str_random(8).Input::file('picture')->getClientOriginalName();
-		$ups = Input::file('picture')->move($dest, $file);
-
 		$data = new Course;
+		if(!is_null(Input::file('picture'))){
+			$dest = 'uploads/';
+			$file = date('dmY').str_random(8).Input::file('picture')->getClientOriginalName();
+			$ups = Input::file('picture')->move($dest, $file);
+			$data->picture = $file;
+		}else{
+			$data->picture = "header-module-default.jpg";
+		}
+
 		$data->name = Input::get('name');
 		$data->description = Input::get('description');
 		$data->info = Input::get('info');
 		$data->start = Input::get('start');
 		$data->end = Input::get('end');
 		$data->author = Input::get('author');
-		$data->picture = $file;
-
 		$data->save();
-
 		return Redirect::to('courses')->with('message', 'New course added, please input the material needed.');
 	}
 
@@ -87,8 +89,9 @@ class CoursesController extends BaseController {
 		if (!User::isAdmin()) {
 				return Redirect::to('dashboard');
 		}
-
-        return View::make('courses.edit');
+		$data['courses'] = Course::find($id);
+		$data['pagetitle'] = "Create new Course.";
+        return View::make('courses.edit', $data);
 	}
 
 	/**
@@ -101,8 +104,25 @@ class CoursesController extends BaseController {
 	{
 		
 		if (!User::isAdmin()) {
-				return Redirect::to('dashboard');
+			return Redirect::to('dashboard');
 		}
+
+		$course = Input::all();
+		$data = Course::find($id);
+		if(!is_null(Input::file('picture'))){
+			$dest = 'uploads/';
+			$file = date('dmY').str_random(8).Input::file('picture')->getClientOriginalName();
+			$ups = Input::file('picture')->move($dest, $file);
+			$data->picture = $file;
+		}
+		$data->name = Input::get('name');
+		$data->description = Input::get('description');
+		$data->info = Input::get('info');
+		$data->start = Input::get('start');
+		$data->end = Input::get('end');
+		$data->author = Input::get('author');
+		$data->save();
+		return Redirect::to('courses')->with('message', 'Courses Edited');
 
 	}
 

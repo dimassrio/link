@@ -1,1 +1,1 @@
-show.blade
+shows.blade

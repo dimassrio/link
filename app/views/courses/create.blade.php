@@ -10,8 +10,8 @@
 				<a href="{{url('courses')}}" class="btn btn-danger btn-lg">Click here to go back.</a>
 			</div>
 			<div class="col-md-8">
-				<h1 class="page-header">	{{$pagetitle}}</h1>
-				{{Form::open(array('url'=>'courses', 'method'=>'post', 'files'=>true))}}
+				<h1 class="page-header">{{$pagetitle}}</h1>
+				{{Form::open(array('url' => 'courses', 'method'=>'POST', 'files'=>true))}}
 					<div class="form-group"><label for="">Course Name</label><input type="text" name="name" class="form-control"></div>
 					<div class="form-group"><label for="">Description</label><input type="text" name="description" class="form-control"></div>
 					<div class="form-group"><label for="">Start Date</label><input type="text" name="start" class="form-control date-start"></div>
