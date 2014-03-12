@@ -22,7 +22,7 @@
 									<td>{{$course['start']}}</td>
 									<td>{{$course['end']}}</td>
 									<td>
-										<a href="{{url('material/create').'/'.$course['id']}}" class="btn btn-primary"id="add-btn" data-toggle="tooltip" data-placement="right" title="Add Material"><span class="glyphicon glyphicon-white glyphicon-plus" ></span></a>
+										<a href="{{url('materials/create').'/'.$course['id']}}" class="btn btn-primary"id="add-btn" data-toggle="tooltip" data-placement="right" title="Add Material"><span class="glyphicon glyphicon-white glyphicon-plus" ></span></a>
 										@if($course['active']==1)
 											<a href="{{url('courses/disable').'/'.$course['id']}}" class="btn btn-info" id="disable-btn" data-toggle="tooltip" data-placement="right" title="Disable this Course"><span class="glyphicon glyphicon-white glyphicon-off" ></span></a>
 										@else
