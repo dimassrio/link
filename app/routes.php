@@ -68,7 +68,4 @@ Route::group(array('before'=>'auth'), function(){
 });
 /*Teacher Login*/
 
-
-
-
 Route::resource('feedbacks', 'FeedbacksController');

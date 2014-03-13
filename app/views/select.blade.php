@@ -26,11 +26,16 @@
 									array_push($courseList, $c->id);	
 								}
 								?>
+								<?php $today = date('Y-m-d'); ?>
 								@if(in_array($course['id'], $courseList))
 									<p class="pull-right">You have been registered for this course.</p>
 								@else
 									@if($course['active']==1)
-										<a href="{{url('select').'/'.$course['id']}}" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-white glyphicon-hand-up"></span> Register this Course</a>			
+										@if(strtotime($today)>strtotime($course['start']) && strtotime($today)<strtotime($course['end']))
+											<a href="{{url('select').'/'.$course['id']}}" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-white glyphicon-hand-up"></span> Register this Course</a>
+										@else
+											<a href="" class="btn btn-danger pull-right" disabled="disabled"><span class="glyphicon glyphicon-white glyphicon-hand-up"></span> You can only register between start and end date.</a>
+										@endif
 									@else
 										<a href="" class="btn btn-danger pull-right" disabled="disabled"><span class="glyphicon glyphicon-white glyphicon-hand-up"></span> You can only register between start and end date.</a>
 									@endif
