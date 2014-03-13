@@ -13,7 +13,7 @@
 		<li><a href="{{url('users')}}">Users</a></li>
 	@elseif(Auth::user()->level == 3)
 	@endif
-	<a href="{{url('select')}}" class="navbar-btn btn btn-primary"><span class="glyphicon glyphicon-white glyphicon-send"></span> Find Course</a>
+	<li><a href="{{url('select')}}" class="navbar-btn btn btn-primary"><span class="glyphicon glyphicon-white glyphicon-send"></span> Find Course</a></li>
 @else
 	@if(Request::is('/'))
 		<li><a href="{{url('register')}}">Register</a></li>

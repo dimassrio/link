@@ -19,8 +19,8 @@
 					@include('header-menu')
 				</ul>
 				@if(Auth::check())
-					<div class="navbar-right">
-						<a href="{{url('logout')}}" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-white glyphicon-log-out"></span> Logout</a>
+					<div class="nav navbar-nav navbar-right">
+						
 						<ul class="nav navbar-nav">
 							<li class="dropdown" id="user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->realname}} <b class="caret"></b></a>
@@ -29,6 +29,7 @@
 								</div>
 							</li>
 						</ul>
+						<li><a href="{{url('logout')}}" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-white glyphicon-log-out"></span> Logout</a></li>
 					</div>
 				@endif
 				</nav>
