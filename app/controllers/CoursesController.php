@@ -204,9 +204,7 @@ class CoursesController extends BaseController {
 		}
 		
 		$user = Auth::user();
-		$mq = $user->material()->wherePivot('material_id', '=', $idm)->get();
-		var_dump($mq);
-		die();
+		$mq = $user->material()->wherePivot('material_id', '=', $idm)->get();	
 		$data['qc'] = $mq->first();
 		$data['qc'] = $data['qc']['original']['pivot_chance'];
 		$data['qr'] = $mq->first();
