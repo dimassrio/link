@@ -164,7 +164,7 @@ class CoursesController extends BaseController {
 		$user = Auth::user();
 		$course = Course::find($id);
 		$tc = sizeof($user->course()->where('user_id', '=', $user['id'])->where('course_id', '=', $id)->get());
-		$material = Material::where('course','=', $id)->get();		
+		$material = Material::where('course','=', $id)->get();
 		if($tc == 0){
 			$user->course()->attach($id, array('current'=>0));
 			$material = Material::where('course','=', $id)->get();
@@ -198,9 +198,15 @@ class CoursesController extends BaseController {
 	}
 
 	public function showMaterial($idc, $idm = null){
+
+		if($idm == null){
+			$idm = var_dump($idc);
+		}
+		
 		$user = Auth::user();
 		$mq = $user->material()->wherePivot('material_id', '=', $idm)->get();
-		
+		var_dump($mq);
+		die();
 		$data['qc'] = $mq->first();
 		$data['qc'] = $data['qc']['original']['pivot_chance'];
 		$data['qr'] = $mq->first();
