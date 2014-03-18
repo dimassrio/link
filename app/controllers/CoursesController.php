@@ -75,6 +75,7 @@ class CoursesController extends BaseController {
 	{
 		$data['courses'] = Course::find($id);
 		$data['pagetitle'] = $data['courses']['name'];
+		$data['material'] = Material::where('course', '=', $id)->orderBy('level')->get();
         return View::make('courses.show', $data);
 	}
 

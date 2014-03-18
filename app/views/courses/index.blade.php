@@ -17,7 +17,7 @@
 							@foreach($courses as $course)
 								<tr>
 									<td>{{$no}}</td>
-									<td>{{$course['name']}}</td>
+									<td><a href="{{url('courses').'/'.$course['id']}}"> {{$course['name']}} </a></td>
 									<td>{{$course['description']}}</td>
 									<td>{{$course['start']}}</td>
 									<td>{{$course['end']}}</td>

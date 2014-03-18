@@ -53,6 +53,8 @@ Route::group(array('before'=>'auth'), function(){
 
 	Route::resource('materials', 'MaterialsController');
 	Route::get('materials/create/{id?}','MaterialsController@create');
+	Route::get('materials/orders/{idc}','MaterialsController@getOrder');
+	Route::post('orders/post/', 'MaterialsController@postOrder');
 	Route::get('quizbuilder','MaterialsController@quizBuilder');
 	Route::post('quizbuilder','MaterialsController@quizProcess');
 	Route::resource('classrooms', 'ClassroomsController');

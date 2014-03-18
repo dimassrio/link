@@ -29,12 +29,14 @@ class MaterialsController extends BaseController {
 		if (!User::isAdmin()) {
 				return Redirect::to('dashboard');
 		}
-		$courses = Course::all();
+		$courses = Course::all()	;
 		$data['courses'] = array();
 		foreach ($courses as $c) {
 			$data['courses'][$c['id']] = $c['name'];
 		}
-		$data['selected'] = Course::find($id);
+		$selected = Course::find($id);
+		$data['selected'] = $selected['id'];
+
         return View::make('materials.create', $data);
 	}
 
@@ -55,22 +57,23 @@ class MaterialsController extends BaseController {
 		$data = new Material;
 		if (!is_null(Input::file('quiz'))) {
 			$file = 'quiz-'.date('Y-m-d').str_random(8).'.json';
-			$ups = Input::file('quiz')->move($dest, $file);	# code...
+			$ups = Input::file('quiz')->move($dest, $file);	
 			$data->quiz = $file;
 		}else{
-			$data->quiz = null;
+			$data->quiz = "";
 		}
 		
 		$data->name = Input::get('name');
 		$data->content = Input::get('content');
 		$data->video = Input::get('video');
-		
-		$data->course = Input::get('course');
-
 		$level = Material::where('course', '=', Input::get('course'))->max('level');
-		if(is_null($level)){$level = 0;}else{$level++;}
+		if(is_null($level)){
+			$level = 0;
+		}else{
+			$level++;
+		}
 		$data->level = $level;
-
+		$data->course = Input::get('course');
 		$data->save();
 		return Redirect::to('materials')->with('message', 'New Material added.');
 	}
@@ -128,7 +131,7 @@ class MaterialsController extends BaseController {
 			$ups = Input::file('quiz')->move($dest, $file);
 			$data->quiz = $file;
 		}else{
-
+			$data->quiz = "";
 		}
 		
 		
@@ -209,6 +212,62 @@ class MaterialsController extends BaseController {
 		file_put_contents($file, $cur);
 		return Response::download(public_path().'/'.$file);
 
+	}
+
+	public function getOrder($idc){
+		$material = Material::where('course', '=', $idc)->get();
+		$max = Material::where('course', '=', $idc)->max('level');
+		$data = array();
+		if(is_null($max)){
+			$order = new StdClass();
+			$order->id = null;
+			$order->label = null;
+
+			$order->id = 0;
+			$order->label = "Empty";
+
+			array_push($data, $order);
+		}else{
+			for ($i=0; $i <=$max+1 ; $i++) { 
+				$count = 0;
+				$hold = null;
+				foreach ($material as $m) {
+					if($i == $m['attributes']['level']){
+						$count++;
+						$hold = $m;
+					}
+				}
+				$order = new StdClass();
+				$order->id = null;
+				$order->label = null;
+				if ($count>0) {	
+					$order->id = $i;
+					$order->label = $hold['attributes']['name'];
+					array_push($data, $order);
+				}else{
+					
+					$order->id = $i;
+					$order->label = "Empty";
+					$data[$i] = $order;
+				}
+
+			}
+		}
+
+		$data = json_encode($data);
+		
+		return Response::json($data);
+	}
+
+	public function postOrder(){
+		$neworder = Input::get('neworder');
+
+		for ($i=0; $i < sizeof($neworder); $i++) { 
+			$material = Material::find($neworder[$i]);
+			$material->level = $i;
+			var_dump($material);
+			$material->save();
+		}
 	}
 
 }

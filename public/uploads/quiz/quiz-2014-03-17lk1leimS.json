@@ -1,0 +1,52 @@
+{
+	"questionlist" :[{
+		"question" : "Definition: A program that performs a particular task, such as texting and calling.",
+		"answerlist" : [{"key" : 1, "answer":"Application"},{"key" : 1, "answer":"Feature"},{"key" : 1, "answer":"Component"}],
+		"correct" : 1
+	},
+	{
+		"question" : "Definition: Parts of a device that makes the device function.",
+		"answerlist" : [{"key" : 1, "answer":"Device"},{"key" : 1, "answer":"Component"},{"key" : 1, "answer":"Application"}],
+		"correct" : 2
+	},
+	{
+		"question" : "Definition: A state of being.",
+		"answerlist" : [{"key" : 1, "answer":"Component"},{"key" : 1, "answer":"Feature"},{"key" : 1, "answer":"Condition"}],
+		"correct" : 3
+	},
+	{
+		"question" : " Definition: A piece of equipment or a mechanism designed to serve a special purpose or perform a special function.",
+		"answerlist" : [{"key" : 1, "answer":"Device"},{"key" : 1, "answer":"Function"},{"key" : 1, "answer":"Feature"}],
+		"correct" : 1
+	},
+	{
+		"question" : "Definition: The structure, form, or appearance.",
+		"answerlist" : [{"key" : 1, "answer":"Device"},{"key" : 1, "answer":"Function"},{"key" : 1, "answer":"Feature"}],
+		"correct" : 2
+	},
+	{
+		"question" : " Definition: The special purpose or activity for which a thing exists or is used.",
+		"answerlist" : [{"key" : 1, "answer":"Condition"},{"key" : 1, "answer":"Feature"},{"key" : 1, "answer":"Function"}],
+		"correct" : 3
+	},
+	{
+		"question" : " Definition: Reception of knowledge or intelligence.",
+		"answerlist" : [{"key" : 1, "answer":"Information"},{"key" : 1, "answer":"Technology"},{"key" : 1, "answer":"Telecommunication"}],
+		"correct" : 1
+	},
+	{
+		"question" : "Definition: Act of placing or arranging.",
+		"answerlist" : [{"key" : 1, "answer":"Condition"},{"key" : 1, "answer":"Position"},{"key" : 1, "answer":"Feature"}],
+		"correct" : 2
+	},
+	{
+		"question" : " Definition: Practical application of knowledge, particularly in certain area.",
+		"answerlist" : [{"key" : 1, "answer":"Information"},{"key" : 1, "answer":"Technology"},{"key" : 1, "answer":"Telecommunication"}],
+		"correct" : 2
+	},
+	{
+		"question" : " Definition: Communication at a distance. Let’s Practice!",
+		"answerlist" : [{"key" : 1, "answer":"Information"},{"key" : 1, "answer":"Telecommunication"},{"key" : 1, "answer":"Technology"}],
+		"correct" : 2
+	}]
+}
