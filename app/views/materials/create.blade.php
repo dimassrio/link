@@ -8,7 +8,7 @@
 				{{Form::open(array('url'=>url('materials'), 'method'=>'post', 'files'=>true))}}
 				<div class="form-group"><label for="">Name</label><input type="text" name="name" class="form-control"></div>
 				<div class="form-group"><label for="">Content</label><textarea name="content" class="form-control" id="" cols="30" rows="10"></textarea></div>
-				<div class="form-group"><label for="">Video</label><input type="text" name="video" class="form-control"></div>
+				<div class="form-group"><label for="">Video</label><input type="text" name="video" class="form-control" placeholder="http://www.youtube.com/watch?=xxxxxxxx"></div>
 				<div class="form-group">
 					{{Form::label('Do you have quiz for this material?')}}
 					<div class="radio">{{Form::radio('quiz-init', '1', true)}} Yes </div>

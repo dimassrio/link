@@ -25,7 +25,7 @@
 							<td>{{$material['name']}}</td>
 							<td>@if(!$material['video']=="")Available @else Not Available @endif</td>
 							<td>@if(!$material['quiz']=="")Available @else Not Available @endif</td>
-							<td><?php $cou = Course::find($material['course']); ?>{{$cou['name']}}</td>
+							<td><a href="{{url('courses/'.$material['course'])}}"> <?php $cou = Course::find($material['course']); ?>{{$cou['name']}}</a></td>
 							<td>{{$material['level']}}</td>
 							<td>
 								<a href="{{url('materials/'.$material['id'].'/edit')}}" class="btn btn-success" id="edit-btn" data-toggle="tooltip" data-placement="right" title="Edit Material"><span class="glyphicon glyphicon-wrench"></span></a>
@@ -37,7 +37,10 @@
 					@endforeach
 				@endif
 				</tbody>
-		</table>		
+		</table>
+		<hr>
+		<p class="lead">Click here to create new Material</p>	
+		<a href="{{url('materials/create')}}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-plus"></span> Create New Material</a>
 		</div>
 	</div>
 </div>	

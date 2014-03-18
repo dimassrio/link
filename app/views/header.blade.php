@@ -24,9 +24,9 @@
 						<ul class="nav navbar-nav">
 							<li class="dropdown" id="user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->realname}} <b class="caret"></b></a>
-								<div class="dropdown-menu">
-										<a href="{{url('users').'/'.Auth::user()->id.'/edit'}}" class="center-block"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a>
-								</div>
+								<ul class="dropdown-menu" role="menu">
+										<li><a href="{{url('users').'/'.Auth::user()->id.'/edit'}}" class="center-block"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
+								</ul>
 							</li>
 						</ul>
 						<li><a href="{{url('logout')}}" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-white glyphicon-log-out"></span> Logout</a></li>

@@ -29,7 +29,7 @@ class MaterialsController extends BaseController {
 		if (!User::isAdmin()) {
 				return Redirect::to('dashboard');
 		}
-		$courses = Course::all()	;
+		$courses = Course::orderBy('name')->get();
 		$data['courses'] = array();
 		foreach ($courses as $c) {
 			$data['courses'][$c['id']] = $c['name'];
@@ -102,7 +102,7 @@ class MaterialsController extends BaseController {
 		}
 		$data['pagetitle'] = "Edit Material";
 		$data['materials'] = Material::find($id);
-		$courses = Course::all();
+		$courses = Course::orderBy('name')->get();
 		$data['courses'] = array();
 		foreach ($courses as $c) {
 			$data['courses'][$c['id']] = $c['name'];
@@ -122,7 +122,7 @@ class MaterialsController extends BaseController {
 		if (!User::isAdmin()) {
 				return Redirect::to('dashboard');
 		}
-
+		/*Updatin New information*/
 		$material = Input::all();
 		$data = Material::find($id);
 		$dest = 'uploads/quiz/';
@@ -133,18 +133,37 @@ class MaterialsController extends BaseController {
 		}else{
 			$data->quiz = "";
 		}
-		
-		
 		$data->name = Input::get('name');
 		$data->content = Input::get('content');
 		$data->video = Input::get('video');
+		$cour = $data->course;
 		$data->course = Input::get('course');
-
+		$data->level = null;
+		$data->save();
+		/*Updating Old Courses*/
+		$ncour = $data->course;
+		$oldcourse = Material::where('course', '=', $cour)->orderBy('level')->get();
+		for ($i=0; $i < sizeof($oldcourse); $i++) {
+			$mat = null;
+			$mat = $oldcourse[$i];
+			$mat->level = $i;
+			$mat->save();
+			var_dump($mat->name."-".$mat->level);
+		}
+		/*Updating New Courses*/
 		$level = Material::where('course', '=', Input::get('course'))->max('level');
 		if(is_null($level)){$level = 0;}else{$level++;}
 		$data->level = $level;
-
 		$data->save();
+
+		$newcourse = Material::where('course', '=', $ncour)->orderBy('level')->get();
+		for ($i=0; $i < sizeof($newcourse) ; $i++) { 
+			$nmat = null;
+			$nmat = $newcourse[$i];
+			$nmat->level = $i;
+			$nmat->save();
+		}
+
         return Redirect::to('materials')->with('message', 'Material successfully edited');
 
 	}
@@ -160,6 +179,20 @@ class MaterialsController extends BaseController {
 		if (!User::isAdmin()) {
 				return Redirect::to('dashboard');
 		}
+
+		$material = Material::find($id);
+		$course = $material->course;
+		$material->delete();
+
+		$courseList = Material::where('course','=', $course)->orderBy()->get();
+
+		for ($i=0; $i < sizeof($courseList); $i++) { 
+			$mat = $courseList[$i];
+			$mat->level = $i;
+			$mat->save();
+		}
+
+		return Redirect::to('users')->with('materials', 'Material have been successfully deleted');
 	}
 
 	public function quizBuilder(){

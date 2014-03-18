@@ -1,17 +1,17 @@
 <!-- Frontpage menu -->
 @if(Auth::check())
-	@if(Auth::user()->level == 0)
+	@if(User::isAdmin())
 		<li><a href="{{url('users')}}">Users</a></li>
 		<li><a href="{{url('courses')}}">Course</a></li>
 		<li><a href="{{url('materials')}}">Material</a></li>
 		<li><a href="{{url('classrooms')}}">Class</a></li>
-	@elseif(Auth::user()->level == 1)
+	@elseif(User::isKoordinator())
 		<li><a href="{{url('evaluation')}}">Evaluation</a></li>
 		<li><a href="{{url('users')}}">Users</a></li>
-	@elseif(Auth::user()->level == 2)
+	@elseif(User::isTeacher())
 		<li><a href="{{url('evaluation')}}">Evaluation</a></li>
 		<li><a href="{{url('users')}}">Users</a></li>
-	@elseif(Auth::user()->level == 3)
+	@elseif(User::isStudent())
 	@endif
 	<li><a href="{{url('select')}}" class="navbar-btn btn btn-primary"><span class="glyphicon glyphicon-white glyphicon-send"></span> Find Course</a></li>
 @else

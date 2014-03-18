@@ -29,7 +29,7 @@
 							<td>{{$user->phone}}</td>
 							<td style="text-align: center;">
 								<a href="{{url('users/'.$user->id.'/edit')}}" class="btn btn-warning" id="edit-btn-{{$user->id}}" data-toggle="tooltip" data-placement="right" title="Edit User"><span class="glyphicon glyphicon-pencil"></span></a>
-								<button class="btn btn-danger btn-smalls" data-toggle="modal" data-target="#deleteModal" data-method-modal="{{url('users/').$user->id}}" id="delete-btn-{{$user->id}}" data-toggle="tooltip" data-placement="right" title="Delete User"><span class="glyphicon glyphicon-remove"></span></button>
+								<button class="btn btn-danger btn-smalls" data-toggle="modal" data-target="#deleteModal" data-method-modal="{{url('users/').$user->id}}" val="{{$user->id}}" id="delete-btn-{{$user->id}}" data-toggle="tooltip" data-placement="right" title="Delete User"><span class="glyphicon glyphicon-remove"></span></button>
 						</td></tr>
 						@endforeach
 					</tbody>
@@ -46,6 +46,7 @@
 				        Are you really sure you want to delete this item?
 				      </div>
 				      <div class="modal-footer">
+				      
 				      </div>
 				    </div>
 				  </div>
@@ -64,9 +65,16 @@
 	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('#user-table').dataTable();
+		
+		//$('#user-table').dataTable();
 		$('[id|=edit-btn]').tooltip();
 		$('[id|=delete-btn]').tooltip();
+		$('[id|=delete-btn]').click(function(){
+				var val = $(this).attr('val');
+				var link = $('<button></button>').attr('class', 'btn btn-danger btn-lg').attr('href', "{{url('users/delete/')}}/"+val).text('Delete Users');
+				$('.modal-footer').empty().append(link);
+			}
+		);
 	});
 	</script>
 @stop

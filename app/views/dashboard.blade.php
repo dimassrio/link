@@ -36,11 +36,13 @@
 					@endforeach
 			</div>
 			<div class="col-md-4">
+			@if(Auth::check())
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="text-center">{{Auth::user()->realname}}</h4>
 					</div>
 					<ul class="list-group">
+						<li class="list-group-item"><img src="{{User::get_gravatar(Auth::user()->email)}}" class="thumbnail center-block" /></li>
 						<li class="list-group-item"><span class="glyphicon glyphicon-heart"></span>  {{Auth::user()->nim}}</li>
 						<li class="list-group-item"><span class="glyphicon glyphicon-user"></span>  {{Auth::user()->username}}</li>
 						<li class="list-group-item"><span class="glyphicon glyphicon-phone"></span> {{Auth::user()->phone}}</li>
@@ -48,6 +50,7 @@
 						<li class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> @if(!is_null(Auth::user()->classroom->first()->name)){{Auth::user()->classroom->first()->name}}@endif</li>
 					</ul>
 				</div>
+			@endif
 				<a href="{{url('select')}}" class="btn btn-warning btn-lg btn-block"> <span class="glyphicon glyphicon-white glyphicon-send"></span> Find Courses</a>
 			</div>
 		</div>

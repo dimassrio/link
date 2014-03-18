@@ -13,7 +13,9 @@
 	@yield('css')
 </head>
 <body>
-	@include('header')
+	@if(!Request::is('/'))
+		@include('header')
+	@endif
 	<div class="main-wrapper">
 		@yield('body')
 	</div>
@@ -23,7 +25,7 @@
 	@yield('js')
 	@if(Session::has('message'))
 		<script type="text/javascript">
-			alertify.success("{{Session::get('message')}}");
+			alertify.log("<h4>{{Session::get('message')}}</h4>");
 		</script>
 	@endif
 </body>
