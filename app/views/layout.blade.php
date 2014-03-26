@@ -20,7 +20,8 @@
 		@yield('body')
 	</div>
 	@include('footer')
-	{{HTML::script(asset('assets/script.min.js'))}}
+<!-- 	{{HTML::script(asset('assets/script.min.js'))}}
+	 -->	{{HTML::script(asset('assets/vendor/bootstrap/dist/js/bootstrap.js'))}}
 	{{HTML::script(asset('assets/vendor/alertifyjs/example/assets/js/lib/alertify/alertify.min.js'))}}
 	@yield('js')
 	@if(Session::has('message'))

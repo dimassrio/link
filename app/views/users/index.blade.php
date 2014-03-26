@@ -66,7 +66,7 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
 		
-		//$('#user-table').dataTable();
+		$('#user-table').dataTable();
 		$('[id|=edit-btn]').tooltip();
 		$('[id|=delete-btn]').tooltip();
 		$('[id|=delete-btn]').click(function(){

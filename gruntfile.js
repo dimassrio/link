@@ -31,7 +31,7 @@ module.exports = function (grunt) {
 			// JavaScript settings
 			js: {
 				base: 'assets/js',							// Base path to you JS folder
-				files: ['assets/vendor/jquery/jquery.min.js','assets/vendor/bootstrap/dist/js/bootstrap.min.js','assets/js/app.js'],							// JavaScript files in order you'd like them concatenated and minified
+				files: ['assets/vendor/jquery/jquery.min.js','assets/js/app.js'],							// JavaScript files in order you'd like them concatenated and minified
 				concat: '<%= options.js.base %>/concat.js',		// Name of the concatenated JavaScript file
 				min: '<%= options.publish %>/script.min.js'		// Name of the minified JavaScript file
 			},
@@ -169,7 +169,7 @@ module.exports = function (grunt) {
 		// Javascript minification - uglify
 		uglify: {
 			options: {
-				preserveComments: false
+				preserveComments: true
 			},
 			files: {
 				src: '<%= options.js.concat %>',
@@ -204,5 +204,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-notify');
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:all', 'less',  'concat:css', 'concat:js', 'cssmin', 'uglify', 'clean:concat']); // Default task
+	grunt.registerTask('default', ['clean:all', 'less',  'concat:css', 'concat:js', 'uglify','cssmin', 'clean:concat']); // Default task
 }

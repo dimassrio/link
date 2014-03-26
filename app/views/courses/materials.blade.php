@@ -36,7 +36,6 @@
 				</h1>
 				<!-- Navigation -->
 				<ul class="nav nav-tabs">
-					
 					<li  class="active" ><a href="#Material" data-toggle="tab">Material</a></li>
 					@if(!$material['quiz'] == "")
 						<li><a href="#quiz" data-toggle="tab">Quiz</a></li>
